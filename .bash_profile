@@ -14,6 +14,7 @@ export PATH=/usr/local/bin:$PATH
 
 # android path
 export PATH=$PATH:/usr/local/Cellar/android-sdk/current/tools:/usr/local/Cellar/android-sdk/current/platform-tools
+export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/current
 
 # aliases
 alias ll='ls -alGh'
