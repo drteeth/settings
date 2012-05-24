@@ -18,11 +18,13 @@ export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/current
 
 # aliases
 alias ll='ls -alGh'
+alias rrake='rake'
 alias rails='bundle exec rails'
 alias rake='bundle exec rake'
 alias guard='bundle exec guard'
 alias rspec='bundle exec rspec'
 alias jasmine='bundle exec guard-jasmine'
+alias rackup='bundle exec rackup'
 
 # prompt
 export PS1='\w\[\033[32m\]$(__git_ps1) \[\033[0m\]% '
