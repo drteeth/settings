@@ -23,5 +23,3 @@
 [difftool "diffmerge"]
   cmd = diffmerge $LOCAL $REMOTE
 [user]
-	name = Benjamin Moss
-	email = ben@indusblue.com

@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/Color Scheme - Default/Railscasts.tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Railscasts 2.tmTheme",
 	"folder_exclude_patterns":
 	[
 		".svn",
@@ -10,7 +10,12 @@
 		"log",
 		"vendor/bundle",
 		"tmp",
-		".bundle"
+		".bundle",
+		".git",
+		".bundle",
+		"vendor/bundle",
+		"tmp",
+		"log"
 	],
 	"file_exclude_patterns": [
 		"*.DS_Store",
@@ -30,5 +35,6 @@
 		"Vintage"
 	],
 	"tab_size": 2,
-	"translate_tabs_to_spaces": true
+	"translate_tabs_to_spaces": true,
+	"theme": "Soda Dark.sublime-theme"
 }
