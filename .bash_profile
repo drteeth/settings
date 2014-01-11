@@ -40,8 +40,12 @@ export PATH=$PATH:/usr/local/packer
 # grep options
 export GREP_OPTIONS='--color=auto --exclude=*.pyc --exclude-dir=.git --exclude-dir=.bundle --exclude-dir=tmp --exclude-dir=log'
 
+# go
+export GOPATH=$HOME/go
+
 # aliases
 alias ll='ls -alGh'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 # prompt
 export PS1='\W\[\033[32m\]$(__git_ps1) \[\033[0m\]% '
