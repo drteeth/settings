@@ -1,3 +1,8 @@
 *~
 .DS_Store
 __*
+.vagrant/
+.tags
+.bundle/
+.ruby-gemset
+.ruby-version

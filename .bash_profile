@@ -1,6 +1,6 @@
 # bash completion
-if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-  . $(brew --prefix)/share/bash-completion/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
 fi
 
 # rvm
@@ -23,7 +23,6 @@ export ANDROID_HOME=/Applications/Android\ Studio.app/sdk/
 # Go path
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-# export GOROOT=/usr/local/go # no longer needed?
 
 # node.js
 export PATH=$PATH:/usr/local/share/npm/bin
