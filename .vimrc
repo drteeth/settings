@@ -12,22 +12,22 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " My bundles
-Plugin 'ervandew/supertab'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'skwp/greplace.vim'
+" Plugin 'ervandew/supertab'
+" Plugin 'kchmck/vim-coffee-script'
+" Plugin 'skwp/greplace.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-endwise'
+" Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
+" Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'craigemery/vim-autotag'
+" Plugin 'craigemery/vim-autotag'
 Plugin 'elixir-lang/vim-elixir'
 
 " Clojure
@@ -141,6 +141,7 @@ map <Leader>vm :Vmodel<cr>
 map <Leader>vv :Vview<cr>
 map <Leader>w <C-w>w
 map <Leader>x :exec getline(".")<cr>
+map <Leader>u :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -170,8 +171,7 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set showmatch
 set nowrap
-" set backupdir=~/.tmp
-" set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files
+set noswapfile
 set autoread
 set wmh=0
 set viminfo+=!
