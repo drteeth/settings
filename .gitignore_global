@@ -6,3 +6,5 @@ __*
 .bundle/
 .ruby-gemset
 .ruby-version
+.idea/
+.vagrant/

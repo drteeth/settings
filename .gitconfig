@@ -49,7 +49,6 @@
 	trustExitCode = true
 [user]
 	email = drteeth@gmail.com
-	anem = Benjamin Moss
 	name = Benjamin Moss
 [push]
 	default = simple

@@ -17,6 +17,7 @@
 		"*.apk"
 	],
 	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
+	"dart_sdk_path": "/usr/local/Cellar/dart/1.12.2/",
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
@@ -62,9 +63,8 @@
 	"font_face": "Source Code Pro",
 	"font_options":
 	[
-		"no_round"
 	],
-	"font_size": 13,
+	"font_size": 15,
 	"ignored_packages":
 	[
 		"Theme - Flatland",
