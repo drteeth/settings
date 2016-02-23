@@ -104,7 +104,7 @@ map <Leader>fix :cnoremap % %<CR>
 map <Leader>fa :sp test/factories.rb<CR>
 map <Leader>i mmgg=G`m
 map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
-map <Leader>m :Rmodel
+map <Leader>m :Emodel<cr>
 map <Leader>mf mmgqap`m:w<cr>
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
 map <Leader>nt :e! ~/Dropbox/docs/trailmix/todo.md<cr>
@@ -131,7 +131,7 @@ map <Leader>su :RSunittest
 map <Leader>sv :RSview
 " map <Leader>t :w<cr>:call RunCurrentSpecFile()<CR>
 map <Leader>y :!rspec --drb %<cr>
-map <Leader>u :Runittest<cr>
+map <Leader>u :Eunittest<cr>
 map <Leader>vc :Vcontroller<cr>
 map <Leader>vf :Vfunctional<cr>
 map <Leader>vg :vsp<cr>:grep
@@ -141,7 +141,7 @@ map <Leader>vm :Vmodel<cr>
 map <Leader>vv :Vview<cr>
 map <Leader>w <C-w>w
 map <Leader>x :exec getline(".")<cr>
-map <Leader>u :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+map <Leader>U :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
