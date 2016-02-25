@@ -18,7 +18,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-bundler'
-" Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-dispatch'
 " Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
@@ -67,6 +67,7 @@ augroup myfiletypes
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
   autocmd FileType ruby map <Leader>t :!clear && bin/rake test %<cr>
+  autocmd FileType ruby map <Leader>t :!clear && bin/rspec %<cr>
 
   " Elixir
   " autocmd FileType elixir map <Leader>t :!clear && mix test %<cr>
@@ -78,70 +79,70 @@ runtime macros/matchit.vim
 
 let mapleader = ","
 
-map <Leader>ac :sp app/controllers/application_controller.rb<cr>
-vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-map <Leader>bb :!bundle install<cr>
-nmap <Leader>bi :source ~/.vimrc<cr>:PluginInstall<cr>
-vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
-map <Leader>cc :!cucumber --drb %<CR>
-map <Leader>cu :Tabularize /\|<CR>
-map <Leader>co mmggVG"*y`m
-map <Leader>cc :Rjcollection client/
-map <Leader>cj :Rjspec client/
-map <Leader>cm :Rjmodel client/
+" map <Leader>ac :sp app/controllers/application_controller.rb<cr>
+" vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+" map <Leader>bb :!bundle install<cr>
+" nmap <Leader>bi :source ~/.vimrc<cr>:PluginInstall<cr>
+" vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
+" map <Leader>cc :!cucumber --drb %<CR>
+" map <Leader>cu :Tabularize /\|<CR>
+" map <Leader>co mmggVG"*y`m
+" map <Leader>cc :Rjcollection client/
+" map <Leader>cj :Rjspec client/
+" map <Leader>cm :Rjmodel client/
 map <Leader>cs :call SearchForCallSitesCursor()<CR>
-map <Leader>ct :Rtemplate client/
-map <Leader>cv :Rjview client/
-map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
-map <Leader>d orequire 'pry'<cr>binding.pry<esc>:w<cr>
-map <Leader>dr :e ~/Dropbox<cr>
-map <Leader>dj :e ~/Dropbox/notes/debugging_journal.txt<cr>
-map <Leader>ec :e ~/code/
-map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
-map <Leader>gl :e Gemfile.lock<cr>
-map <Leader>f :call OpenFactoryFile()<CR>
-map <Leader>fix :cnoremap % %<CR>
-map <Leader>fa :sp test/factories.rb<CR>
-map <Leader>i mmgg=G`m
-map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
+" map <Leader>ct :Rtemplate client/
+" map <Leader>cv :Rjview client/
+" map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
+" map <Leader>d orequire 'pry'<cr>binding.pry<esc>:w<cr>
+" map <Leader>dr :e ~/Dropbox<cr>
+" map <Leader>dj :e ~/Dropbox/notes/debugging_journal.txt<cr>
+" map <Leader>ec :e ~/code/
+" map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
+" map <Leader>gl :e Gemfile.lock<cr>
+" map <Leader>f :call OpenFactoryFile()<CR>
+" map <Leader>fix :cnoremap % %<CR>
+" map <Leader>fa :sp test/factories.rb<CR>
+" map <Leader>i mmgg=G`m
+" map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
 map <Leader>m :Emodel<cr>
-map <Leader>mf mmgqap`m:w<cr>
-map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
-map <Leader>nt :e! ~/Dropbox/docs/trailmix/todo.md<cr>
-map <Leader>o :w<cr>:call RunNearestSpec()<CR>
-map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
-map <Leader>pn :sp ~/Dropbox/work/thoughtbot/notes/project-notes.md<cr>
-map <Leader>q :copen<cr><cr>
-map <Leader>ra :%s/
-map <Leader>rd :!bundle exec rspec % --format documentation<CR>
-map <Leader>rs :vsp <C-r>#<cr><C-w>w
-map <Leader>rt q:?!ruby<cr><cr>
-map <Leader>rw :%s/\s\+$//<cr>:w<cr>
-map <Leader>sc :sp db/schema.rb<cr>
-map <Leader>sg :sp<cr>:grep<space>
-map <Leader>sj :call OpenJasmineSpecInBrowser()<cr>
-map <Leader>sm :RSmodel
-map <Leader>sp yss<p>
-map <Leader>sn :e ~/.vim/snippets/ruby.snippets<CR>
-map <Leader>so :so %<cr>
-map <Leader>sq j<c-v>}klllcs<esc>:wq<cr>
-map <Leader>ss ds)i <esc>:w<cr>
-map <Leader>st :!ruby -Itest % -n "//"<left><left>
-map <Leader>su :RSunittest
-map <Leader>sv :RSview
-" map <Leader>t :w<cr>:call RunCurrentSpecFile()<CR>
-map <Leader>y :!rspec --drb %<cr>
+" map <Leader>mf mmgqap`m:w<cr>
+" map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
+" map <Leader>nt :e! ~/Dropbox/docs/trailmix/todo.md<cr>
+" map <Leader>o :w<cr>:call RunNearestSpec()<CR>
+" map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
+" map <Leader>pn :sp ~/Dropbox/work/thoughtbot/notes/project-notes.md<cr>
+" map <Leader>q :copen<cr><cr>
+" map <Leader>ra :%s/
+" map <Leader>rd :!bundle exec rspec % --format documentation<CR>
+" map <Leader>rs :vsp <C-r>#<cr><C-w>w
+" map <Leader>rt q:?!ruby<cr><cr>
+" map <Leader>rw :%s/\s\+$//<cr>:w<cr>
+" map <Leader>sc :sp db/schema.rb<cr>
+" map <Leader>sg :sp<cr>:grep<space>
+" map <Leader>sj :call OpenJasmineSpecInBrowser()<cr>
+" map <Leader>sm :RSmodel
+" map <Leader>sp yss<p>
+" map <Leader>sn :e ~/.vim/snippets/ruby.snippets<CR>
+" map <Leader>so :so %<cr>
+" map <Leader>sq j<c-v>}klllcs<esc>:wq<cr>
+" map <Leader>ss ds)i <esc>:w<cr>
+" map <Leader>st :!ruby -Itest % -n "//"<left><left>
+" map <Leader>su :RSunittest
+" map <Leader>sv :RSview
+" " map <Leader>t :w<cr>:call RunCurrentSpecFile()<CR>
+" map <Leader>y :!rspec --drb %<cr>
 map <Leader>u :Eunittest<cr>
-map <Leader>vc :Vcontroller<cr>
-map <Leader>vf :Vfunctional<cr>
-map <Leader>vg :vsp<cr>:grep
-map <Leader>vi :tabe ~/.vimrc<CR>
-map <Leader>vu :AV<CR>
-map <Leader>vm :Vmodel<cr>
-map <Leader>vv :Vview<cr>
-map <Leader>w <C-w>w
-map <Leader>x :exec getline(".")<cr>
-map <Leader>U :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" map <Leader>vc :Vcontroller<cr>
+" map <Leader>vf :Vfunctional<cr>
+" map <Leader>vg :vsp<cr>:grep
+" map <Leader>vi :tabe ~/.vimrc<CR>
+" map <Leader>vu :AV<CR>
+" map <Leader>vm :Vmodel<cr>
+" map <Leader>vv :Vview<cr>
+" map <Leader>w <C-w>w
+" map <Leader>x :exec getline(".")<cr>
+" map <Leader>U :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -278,7 +279,7 @@ endfunction
 
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 " Without --hidden, it never finds .travis.yml since it starts with a dot
-let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 
 " Enable MRU for CtrlP
@@ -294,7 +295,7 @@ let g:rspec_command = "!clear && bin/rspec {spec}"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-inoremap <Tab> <C-P>
+" inoremap <Tab> <C-P>
 
 " Let's be reasonable, shall we?
 nmap k gk
@@ -305,7 +306,7 @@ let g:CommandTMatchWindowAtTop=1
 
 " Don't wait so long for the next keypress (particularly in ambigious Leader
 " situations.
-set timeoutlen=500
+" set timeoutlen=500
 
 " Remove trailing whitespace on save for ruby files.
 au BufWritePre *.rb :%s/\s\+$//e
