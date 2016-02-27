@@ -29,6 +29,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'craigemery/vim-autotag'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'rking/ag.vim'
 
 " Clojure
 " Plugin 'guns/vim-clojure-static'
@@ -66,8 +67,8 @@ augroup myfiletypes
   " autocmd FileType ruby,eruby,yaml setlocal colorcolumn=80
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
-  autocmd FileType ruby map <Leader>t :!clear && bin/rake test %<cr>
-  autocmd FileType ruby map <Leader>t :!clear && bin/rspec %<cr>
+  " autocmd FileType ruby map <Leader>t :!clear && bin/rake test %<cr>
+  " autocmd FileType ruby map <Leader>t :!clear && bin/rspec %<cr>
 
   " Elixir
   " autocmd FileType elixir map <Leader>t :!clear && mix test %<cr>
@@ -130,7 +131,7 @@ map <Leader>m :Emodel<cr>
 " map <Leader>st :!ruby -Itest % -n "//"<left><left>
 " map <Leader>su :RSunittest
 " map <Leader>sv :RSview
-" " map <Leader>t :w<cr>:call RunCurrentSpecFile()<CR>
+" map <Leader>t :w<cr>:call RunCurrentSpecFile()<CR>
 " map <Leader>y :!rspec --drb %<cr>
 map <Leader>u :Eunittest<cr>
 " map <Leader>vc :Vcontroller<cr>
@@ -144,11 +145,17 @@ map <Leader>u :Eunittest<cr>
 " map <Leader>x :exec getline(".")<cr>
 " map <Leader>U :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 map <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 map <Leader>s :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 map <Leader>v :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+nmap <C-f> :Ag<space>
 
 map <C-h> :nohl<cr>
 imap <C-l> :<Space>
