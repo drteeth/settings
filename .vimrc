@@ -152,9 +152,9 @@ map <Leader>a :call RunAllSpecs()<CR>
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
-map <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
-map <Leader>s :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
-map <Leader>v :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+" map <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+" map <Leader>s :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+" map <Leader>v :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 nmap <C-f> :Ag<space>
 
 map <C-h> :nohl<cr>
@@ -244,6 +244,10 @@ set wildmode=list:full
 set noesckeys
 set ttimeout
 set ttimeoutlen=1
+
+" make splitting more sane
+set splitbelow
+set splitright
 
 " Turn on spell-checking in markdown and text.
 " au BufRead,BufNewFile *.md,*.txt setlocal spell
@@ -344,7 +348,7 @@ endfunction
 map <Leader>n :call RenameFile()<cr>
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·
+" set list listchars=tab:»·,trail:·
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
