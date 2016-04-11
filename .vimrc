@@ -12,11 +12,12 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " My bundles
-" Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 " Plugin 'kchmck/vim-coffee-script'
 " Plugin 'skwp/greplace.vim'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'thoughtbot/vim-rspec'
+" Plugin 'thoughtbot/vim-rspec'
+Plugin 'janko-m/vim-test'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-dispatch'
 " Plugin 'tpope/vim-endwise'
@@ -30,6 +31,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'craigemery/vim-autotag'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'rking/ag.vim'
+Plugin 'scrooloose/nerdtree'
 
 " Clojure
 " Plugin 'guns/vim-clojure-static'
@@ -64,7 +66,7 @@ augroup myfiletypes
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
   autocmd FileType ruby,eruby,yaml setlocal path+=lib
-  " autocmd FileType ruby,eruby,yaml setlocal colorcolumn=80
+  autocmd FileType ruby,eruby,yaml setlocal colorcolumn=80
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
   " autocmd FileType ruby map <Leader>t :!clear && bin/rake test %<cr>
@@ -145,10 +147,16 @@ map <Leader>u :Eunittest<cr>
 " map <Leader>x :exec getline(".")<cr>
 " map <Leader>U :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" map <Leader>t :call RunCurrentSpecFile()<CR>
+" map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
+
+nmap <silent> <Leader>s :TestNearest<CR>
+nmap <silent> <Leader>t :TestFile<CR>
+nmap <silent> <Leader>a :TestSuite<CR>
+nmap <silent> <Leader>l :TestLast<CR>
+nmap <silent> <Leader>g :TestVisit<CR>
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -304,6 +312,8 @@ let g:ctrlp_cmd = 'CtrlP'
 
 let g:rspec_command = "!clear && bin/rspec {spec}"
 
+" vim-test
+" let test#strategy = "dispatch"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " inoremap <Tab> <C-P>
