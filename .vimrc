@@ -151,6 +151,8 @@ map <Leader>u :Eunittest<cr>
 " map <Leader>s :call RunNearestSpec()<CR>
 " map <Leader>l :call RunLastSpec()<CR>
 " map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>w :bp<bar>sp<bar>bn<bar>bd<CR>
+map <Leader>n :NERDTreeToggle<CR>
 
 nmap <silent> <Leader>s :TestNearest<CR>
 nmap <silent> <Leader>t :TestFile<CR>
@@ -355,7 +357,7 @@ function! RenameFile()
     redraw!
   endif
 endfunction
-map <Leader>n :call RenameFile()<cr>
+map <Leader>r :call RenameFile()<cr>
 
 " Display extra whitespace
 " set list listchars=tab:»·,trail:·
