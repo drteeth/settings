@@ -48,10 +48,6 @@ values."
            ruby-test-runner 'rspec
            ruby-version-manager 'rbenv)
      ruby-on-rails
-     (javascript :variables
-                 js2-basic-offset 2
-                 js-indent-level 2)
-     haskell
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -117,9 +113,6 @@ values."
    dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
                          jbeans
-                         solarized-light
-                         solarized-dark
-                         leuven
                          monokai
                          zenburn)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -269,7 +262,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq coffee-tab-width n) ; coffeescript
   (setq javascript-indent-level n) ; javascript-mode
   (setq js-indent-level n) ; js-mode
-  (setq js2-basic-offset n) ; js2-mode
+  ;; (setq js2-basic-offset n) ; js2-mode
   (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
   (setq web-mode-css-indent-offset n) ; web-mode, css in html file
   (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
@@ -295,7 +288,7 @@ layers configuration. You are free to put any user code."
 
   (setq-default
    ;; js2-mode
-   js2-basic-offset 2
+   ;; js2-basic-offset 2
    ;; web-mode
    css-indent-offset 2
    web-mode-markup-indent-offset 2
