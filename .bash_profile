@@ -52,11 +52,6 @@ export EDITOR=nvim
 # Make FZF respect .gitignore
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
-# TEMP
-# NobleHour android keystore
-export STORE_PASS=flam-Bang8gorilla
-export KEY_PASS=flam-Bang8gorilla
-
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
