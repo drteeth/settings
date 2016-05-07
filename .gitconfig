@@ -50,9 +50,12 @@
 [user]
 	email = drteeth@gmail.com
 	name = Benjamin Moss
+	signingkey = 9D7A5AC4
 [push]
 	default = simple
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[commit]
+	gpgsign = true
