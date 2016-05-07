@@ -1,25 +1,25 @@
+# homebrew path
+export PATH=/usr/local/bin:$PATH
+
 # bash completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+  . $(brew --prefix)/share/bash-completion/bash_completion
 fi
 
-# homebrew path
-export PATH=$HOME/.rvm/bin:/usr/local/bin:/usr/local/sbin:$PATH
-
-# bundler binstubs
-# export PATH=.bundle/binstubs:$PATH
-
-# android path
+# android
 export PATH=$PATH:/Applications/Android\ Studio.app/sdk/tools:/Applications/Android\ Studio.app/sdk/platform-tools
 export ANDROID_SDK_ROOT=/Applications/Android\ Studio.app/sdk
 export ANDROID_HOME=/Applications/Android\ Studio.app/sdk/
+export JAVA6_HOME=`/usr/libexec/java_home -v 1.6`
+export ANDROID_HVPROTO=ddm
 
 # Go path
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # node.js
-export PATH=$PATH:/usr/local/share/npm/bin
+# export PATH=$PATH:/usr/local/share/npm/bin
+# export PATH="~/.node/bin:$PATH"
 
 # StandardML
 # export PATH=$PATH:/usr/local/Cellar/smlnj/110.75/libexec/bin
@@ -33,9 +33,6 @@ export PATH=$PATH:/usr/local/share/npm/bin
 # grep options
 export GREP_OPTIONS='--color=auto --exclude=*.pyc --exclude-dir=.git --exclude-dir=.bundle --exclude-dir=tmp --exclude-dir=log'
 
-# go
-export GOPATH=$HOME/go
-
 # aliases
 alias ll='ls -alGh'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
@@ -47,7 +44,7 @@ export PS1='\W\[\033[32m\]$(__git_ps1) \[\033[0m\]% '
 export ARCHFLAGS="-arch x86_64"
 
 # for curl-ca-bundle and more specifically vagrant/digital ocean
-export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+# export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
 # set the default editor to subl
 export EDITOR=nvim
@@ -60,5 +57,7 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 export STORE_PASS=flam-Bang8gorilla
 export KEY_PASS=flam-Bang8gorilla
 
+# rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 source ~/.profile
