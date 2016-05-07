@@ -46,7 +46,7 @@ values."
      (ruby :variables
            ruby-enable-enh-ruby-mode t
            ruby-test-runner 'rspec
-           ruby-version-manager 'rbenv)
+           ruby-version-manager 'rvm)
      ruby-on-rails
      )
    ;; List of additional packages that will be installed without being
@@ -110,17 +110,16 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(jbeans
+                         spacemacs-dark
                          spacemacs-light
-                         jbeans
-                         monokai
-                         zenburn)
+                         monokai)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
