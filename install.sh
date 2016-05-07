@@ -9,7 +9,7 @@ ln -snf `pwd`/.spacemacs ~/.spacemacs
 
 # neovim
 mkdir -p ~/.config/nvim
-ln -snf `pwd`/nvim-init.vim ~/.config/nvim
+ln -snf `pwd`/nvim-init.vim ~/.config/nvim/init.vim
 
 # vim-plug
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
