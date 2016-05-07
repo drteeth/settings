@@ -6,6 +6,7 @@ ln -snf `pwd`/.gitignore_global ~/.gitignore_global
 ln -snf `pwd`/.tmux.conf ~/.tmux.conf
 ln -snf `pwd`/.vimrc ~/.vimrc
 ln -snf `pwd`/.spacemacs ~/.spacemacs
+ln -snf `pwd`/.bash_profile ~/.bash_profile
 
 # neovim
 mkdir -p ~/.config/nvim
