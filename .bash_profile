@@ -1,13 +1,7 @@
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. $(brew --prefix)/etc/bash_completion
+  . $(brew --prefix)/etc/bash_completion
 fi
-
-# rvm
-source $HOME/.rvm/scripts/rvm
-
-# rbenv
-# eval "$(rbenv init -)"
 
 # homebrew path
 export PATH=$HOME/.rvm/bin:/usr/local/bin:/usr/local/sbin:$PATH
@@ -34,7 +28,7 @@ export PATH=$PATH:/usr/local/share/npm/bin
 # export PATH=$PATH:$HOME/.cabal/bin
 
 # https://packer.io
-export PATH=$PATH:/usr/local/packer
+# export PATH=$PATH:/usr/local/packer
 
 # grep options
 export GREP_OPTIONS='--color=auto --exclude=*.pyc --exclude-dir=.git --exclude-dir=.bundle --exclude-dir=tmp --exclude-dir=log'
@@ -56,4 +50,15 @@ export ARCHFLAGS="-arch x86_64"
 export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
 # set the default editor to subl
-export EDITOR=subl
+export EDITOR=nvim
+
+# Make FZF respect .gitignore
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
+# TEMP
+# NobleHour android keystore
+export STORE_PASS=flam-Bang8gorilla
+export KEY_PASS=flam-Bang8gorilla
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+source ~/.profile
