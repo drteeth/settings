@@ -6,6 +6,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tomtom/tcomment_vim'
 Plug 'janko-m/vim-test'
+Plug 'kassio/neoterm'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
@@ -45,6 +46,8 @@ augroup myfiletypes
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 augroup END
 
+" remove trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
 
 set number
 set autoindent
@@ -67,6 +70,9 @@ map <C-p> :FZF<cr>
 " make splitting more sane
 set splitbelow
 set splitright
+
+" use a terminal for test
+let test#strategy = "neoterm"
 
 " Gary Bernhardt Rename curent file
 function! RenameFile()
