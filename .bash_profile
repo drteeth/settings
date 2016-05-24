@@ -46,7 +46,7 @@ export ARCHFLAGS="-arch x86_64"
 # for curl-ca-bundle and more specifically vagrant/digital ocean
 # export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
-# set the default editor to subl
+# set the default editor
 export EDITOR=nvim
 
 # Make FZF respect .gitignore
