@@ -4,7 +4,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'tomtom/tcomment_vim'
+" Plug 'tomtom/tcomment_vim'
 Plug 'janko-m/vim-test'
 Plug 'kassio/neoterm'
 Plug 'tpope/vim-fugitive'
@@ -14,10 +14,25 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'rking/ag.vim'
 Plug 'nanotech/jellybeans.vim'
 
+" thoughtbot...
+Plug 'christoomey/vim-run-interactive'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/tComment'
+
 call plug#end()
 
 colorscheme jellybeans
-let mapleader = ","
+let mapleader = " "
 map <Leader>n :NERDTreeToggle<CR>
 
 nmap <C-f> :Ag<space>
@@ -45,6 +60,37 @@ augroup myfiletypes
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 augroup END
+
+set backspace=2   " Backspace deletes like most programs in insert mode
+set nobackup
+set nowritebackup
+set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set history=50
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
+set autowrite     " Automatically :write before running commands
+
+" default tabs
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set shiftround
+set expandtab
+
+" When the type of shell script is /bin/sh, assume a POSIX-compatible
+" shell for syntax highlighting purposes.
+let g:is_posix = 1
+
+filetype plugin indent on
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
 
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
