@@ -21,29 +21,48 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/tComment'
+Plug 'tpope/vim-dispatch'
 
 call plug#end()
 
 colorscheme jellybeans
-let mapleader = " "
+
+let mapleader = ","
+
 map <Leader>n :NERDTreeToggle<CR>
+
+" Exclude Javascript files in :Rtags via rails.vim due to warnings when
+" parsing
+let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+
+" Index ctags from any project, including those outside Rails
+function! ReindexCtags()
+	let l:ctags_hook = '$(git rev-parse --show-toplevel)/.git/hooks/ctags'
+
+	if exists(l:ctags_hook)
+		exec '!'. l:ctags_hook
+	else
+		exec "!ctags -R ."
+	endif
+endfunction
+nmap <Leader>ct :call ReindexCtags()<CR>
 
 nmap <C-f> :Ag<space>
 
-" Emacs-like beginning and end of line.
+" Emacs-like beginning and end of line. Doesn't work in nvim?
 imap <c-e> <c-o>$
 imap <c-a> <c-o>^
 
 " Quickfix management
 map <Space><Space> :ccl<cr>
 
+" Test runner (vim-test)
 nmap <silent> <Leader>s :TestNearest<CR>
 nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>a :TestSuite<CR>
@@ -105,7 +124,7 @@ set grepprg=ag
 set wildignore+=tmp/**
 
 " Clear search highlight
-map <C-h> :nohl<cr>
+map <C-s> :nohl<cr>
 
 " FZF with ctrl-p
 map <C-p> :FZF<cr>
@@ -118,7 +137,9 @@ set splitbelow
 set splitright
 
 " use a terminal for test
-let test#strategy = "neoterm"
+" let test#strategy = "neoterm"
+" let test#strategy = "dispatch"
+let test#strategy = "neovim"
 
 " Gary Bernhardt Rename curent file
 function! RenameFile()
