@@ -115,6 +115,7 @@ set list listchars=tab:»·,trail:·,nbsp:·
 autocmd BufWritePre * :%s/\s\+$//e
 
 set number
+set relativenumber
 set autoindent
 
 " Search with ag
