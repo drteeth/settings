@@ -13,6 +13,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'elixir-lang/vim-elixir'
 Plug 'rking/ag.vim'
 Plug 'nanotech/jellybeans.vim'
+Plug 'mustache/vim-mustache-handlebars'
 
 " thoughtbot...
 Plug 'christoomey/vim-run-interactive'
