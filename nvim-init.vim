@@ -14,6 +14,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'rking/ag.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'qpkorr/vim-bufkill'
 
 " thoughtbot...
 Plug 'christoomey/vim-run-interactive'
@@ -37,6 +38,8 @@ colorscheme jellybeans
 let mapleader = ","
 
 map <Leader>n :NERDTreeToggle<CR>
+
+" use buffkill instead of :bd
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when
 " parsing
@@ -103,11 +106,14 @@ set expandtab
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
+
+" fzf layout
+let g:fzf_layout = { 'right': '~40%' }
+
 filetype plugin indent on
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
-
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -116,7 +122,7 @@ set list listchars=tab:»·,trail:·,nbsp:·
 autocmd BufWritePre * :%s/\s\+$//e
 
 set number
-set relativenumber
+" set relativenumber
 set autoindent
 
 " Search with ag
@@ -139,9 +145,9 @@ set splitbelow
 set splitright
 
 " use a terminal for test
-" let test#strategy = "neoterm"
+let test#strategy = "neoterm"
 " let test#strategy = "dispatch"
-let test#strategy = "neovim"
+" let test#strategy = "neovim"
 
 " Gary Bernhardt Rename curent file
 function! RenameFile()
@@ -161,5 +167,5 @@ command! Qall qall
 command! E e
 command! W w
 command! Wq wq
-command! Bd bd
+command! Bd BD
 command! Bp bp
