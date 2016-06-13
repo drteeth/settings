@@ -39,6 +39,9 @@ let mapleader = ","
 
 map <Leader>n :NERDTreeToggle<CR>
 
+" use the system clipboard
+set clipboard+=unnamedplus
+
 " use buffkill instead of :bd
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when
