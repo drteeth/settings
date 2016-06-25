@@ -15,6 +15,7 @@ Plug 'rking/ag.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'qpkorr/vim-bufkill'
+Plug 'fntlnz/atags.vim'
 
 " thoughtbot...
 Plug 'christoomey/vim-run-interactive'
@@ -75,6 +76,15 @@ nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>a :TestSuite<CR>
 nmap <silent> <Leader>l :TestLast<CR>
 nmap <silent> <Leader>g :TestVisit<CR>
+
+" ctags
+let g:atags_build_commands_list = [
+    \"ctags -R -f tags.tmp",
+    \"awk 'length($0) < 400' tags.tmp > tags",
+    \"rm tags.tmp"
+    \]
+" Generate tags everytime a file is being written.
+autocmd BufWritePost * call atags#generate()
 
 augroup myfiletypes
   " Clear old autocmds in group

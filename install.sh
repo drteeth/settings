@@ -15,3 +15,7 @@ ln -snf `pwd`/nvim-init.vim ~/.config/nvim/init.vim
 # vim-plug
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# ctags
+brew tap universal-ctags/universal-ctags
+brew install --HEAD universal-ctags
