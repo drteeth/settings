@@ -1,16 +1,16 @@
 # homebrew path
 export PATH=/usr/local/bin:$PATH
 
-# bash completion
+bash completion
 if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
   . $(brew --prefix)/share/bash-completion/bash_completion
 fi
 
 # android
 export PATH=$PATH:/Applications/Android\ Studio.app/sdk/tools:/Applications/Android\ Studio.app/sdk/platform-tools
-export ANDROID_SDK_ROOT=/Applications/Android\ Studio.app/sdk
-export ANDROID_HOME=/Applications/Android\ Studio.app/sdk/
-export JAVA6_HOME=`/usr/libexec/java_home -v 1.6`
+export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/24.4.1_1/
+export ANDROID_HOME=/usr/local/Cellar/android-sdk/24.4.1_1/
+# export JAVA6_HOME=`/usr/libexec/java_home -v 1.6`
 export ANDROID_HVPROTO=ddm
 
 # Go path
@@ -48,6 +48,7 @@ export ARCHFLAGS="-arch x86_64"
 
 # set the default editor
 export EDITOR=nvim
+# alias vim=`nvim`
 
 # Make FZF respect .gitignore
 export FZF_DEFAULT_COMMAND='ag -g ""'

@@ -3,9 +3,7 @@ call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'tomtom/tcomment_vim'
 Plug 'janko-m/vim-test'
 Plug 'kassio/neoterm'
@@ -17,9 +15,6 @@ Plug 'rking/ag.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'qpkorr/vim-bufkill'
-Plug 'fntlnz/atags.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 
 " thoughtbot...
 Plug 'christoomey/vim-run-interactive'
@@ -35,23 +30,18 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/tComment'
 Plug 'tpope/vim-dispatch'
-Plug 'Shougo/deoplete.nvim'
 
 call plug#end()
 
 colorscheme jellybeans
 
+syntax on
+
 let mapleader = ","
 
 map <Leader>n :NERDTreeToggle<CR>
 
-" use the system clipboard
-set clipboard+=unnamedplus
-
 " use buffkill instead of :bd
-
-" Allow JSX in normal JS files
-let g:jsx_ext_required = 0
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when
 " parsing
@@ -59,13 +49,13 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
 " Index ctags from any project, including those outside Rails
 function! ReindexCtags()
-	let l:ctags_hook = '$(git rev-parse --show-toplevel)/.git/hooks/ctags'
+  let l:ctags_hook = '$(git rev-parse --show-toplevel)/.git/hooks/ctags'
 
-	if exists(l:ctags_hook)
-		exec '!'. l:ctags_hook
-	else
-		exec "!ctags -R ."
-	endif
+  if exists(l:ctags_hook)
+    exec '!'. l:ctags_hook
+  else
+    exec "!ctags -R ."
+  endif
 endfunction
 nmap <Leader>ct :call ReindexCtags()<CR>
 
@@ -84,15 +74,6 @@ nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>a :TestSuite<CR>
 nmap <silent> <Leader>l :TestLast<CR>
 nmap <silent> <Leader>g :TestVisit<CR>
-
-" ctags
-let g:atags_build_commands_list = [
-    \"ctags -R -f tags.tmp",
-    \"awk 'length($0) < 400' tags.tmp > tags",
-    \"rm tags.tmp"
-    \]
-" Generate tags everytime a file is being written.
-autocmd BufWritePost * call atags#generate()
 
 augroup myfiletypes
   " Clear old autocmds in group
@@ -129,7 +110,7 @@ let g:is_posix = 1
 
 
 " fzf layout
-" let g:fzf_layout = { 'right': '~40%' }
+let g:fzf_layout = { 'right': '~40%' }
 
 filetype plugin indent on
 
