@@ -1,13 +1,13 @@
 # homebrew path
 export PATH=/usr/local/bin:$PATH
 
-bash completion
+# bash completion
 if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
   . $(brew --prefix)/share/bash-completion/bash_completion
 fi
 
 # android
-export PATH=$PATH:/Applications/Android\ Studio.app/sdk/tools:/Applications/Android\ Studio.app/sdk/platform-tools
+export PATH=$PATH:/usr/local/Cellar/android-sdk/24.4.1_1/tools
 export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/24.4.1_1/
 export ANDROID_HOME=/usr/local/Cellar/android-sdk/24.4.1_1/
 # export JAVA6_HOME=`/usr/libexec/java_home -v 1.6`
