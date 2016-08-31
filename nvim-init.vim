@@ -20,11 +20,13 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'fntlnz/atags.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'neomake/neomake'
+Plug 'rust-lang/rust.vim'
 
 " thoughtbot...
 Plug 'christoomey/vim-run-interactive'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
@@ -190,3 +192,18 @@ command! W w
 command! Wq wq
 command! Bd BD
 command! Bp bp
+
+" autocmd! BufWritePost,BufEnter * Neomake
+let g:neomake_open_list = 2
+let g:neomake_verbose=3
+let g:neomake_logfile='/tmp/error.log'
+
+" let g:neomake_serialize = 1
+" let g:neomake_serialize_abort_on_error = 1
+" let g:neomake_elixir_enabled_makers = ['mix']
+" let g:neomake_elixir_mix_maker = {
+"   \ 'args': ['compile'],
+"   \ 'errorformat':
+"   \ '** %s %f:%l: %m,' .
+"   \ '%f:%l: warning: %m'
+"   \ }
