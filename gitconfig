@@ -20,19 +20,14 @@
 [merge]
   tool = diffmerge
   keepBackup = false
-[mergetool "p4merge"]
-  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$REMOTE" "$PWD/$LOCAL" "$PWD/$MERGED"
-  keepTemporaries = false
-  trustExitCode = false
-  keepBackup = false
+[diff]
+  tool = diffmerge
 [mergetool "diffmerge"]
   cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
   trustExitCode = true
 [mergetool]
   keepBackup = false
   prompt = false
-[diff]
-  tool = diffmerge
 [difftool "diffmerge"]
   cmd = diffmerge $LOCAL $REMOTE
 [difftool]
@@ -42,6 +37,11 @@
 [mergetool "sourcetree"]
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
+[mergetool "androidstudio"]
+   cmd = studio merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+   trustExitCode = true
+[difftool "androidstudio"]
+   cmd = studio diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
 [user]
   email = drteeth@gmail.com
   name = Benjamin Moss
