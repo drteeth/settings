@@ -19,3 +19,4 @@ tags
 tmp/**/*
 !tmp/cache/.keep
 *.pyc
+tags.tmp
