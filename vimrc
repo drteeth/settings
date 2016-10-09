@@ -3,7 +3,7 @@ call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 " Plug 'tomtom/tcomment_vim'
 Plug 'janko-m/vim-test'
 Plug 'kassio/neoterm'
@@ -15,11 +15,15 @@ Plug 'rking/ag.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'qpkorr/vim-bufkill'
+Plug 'fntlnz/atags.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'rust-lang/rust.vim'
 
 " thoughtbot...
 Plug 'christoomey/vim-run-interactive'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
@@ -30,6 +34,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/tComment'
 Plug 'tpope/vim-dispatch'
+Plug 'Shougo/deoplete.nvim'
 
 call plug#end()
 
