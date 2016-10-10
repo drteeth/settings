@@ -1,8 +1,8 @@
-/bower_components/
-/log
-/node_modules/
-/tmp
-/vendor
+bower_components
+log
+node_modules
+tmp
+vendor
 coverage
 public/assets
 *.sql

@@ -202,7 +202,7 @@ augroup localEx
   autocmd filetype help nnoremap <buffer>q :q<CR>
   autocmd filetype help set nonumber
 
-  autocmd! BufReadPost,BufWritePost * Neomake
+  " autocmd! BufReadPost,BufWritePost * Neomake
 augroup END
 
 " git shortcuts
@@ -267,9 +267,7 @@ if has('nvim')
   autocmd BufEnter term://* startinsert
 end
 
-
 " Ben
-
 map <Leader>n :NERDTreeToggle<CR>
 nmap <C-f> :RFind<space>
 
@@ -282,14 +280,14 @@ let g:jsx_ext_required = 0
 " Quickfix management - does it work with leader set to space?
 " map <Space><Space> :ccl<cr>
 
+" remove trailing whitespace
+" autocmd BufWritePre * :%s/\s\+$//e
+
 " fzf layout
 " let g:fzf_layout = { 'right': '~40%' }
 
 " Search with rg
 set grepprg=rg\ --vimgrep
-
-" Ignore stuff that can't be opened
-" set wildignore+=tmp/**
 
 " fat fingers
 command! Q q " Bind :Q to :q
