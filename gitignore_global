@@ -3,7 +3,7 @@
 __*
 .vagrant/
 .tags
-.bundle/
+.bundle
 .ruby-gemset
 .ruby-version
 .idea/
@@ -20,3 +20,4 @@ tmp/**/*
 !tmp/cache/.keep
 *.pyc
 tags.tmp
+.tags

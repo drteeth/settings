@@ -12,21 +12,12 @@ ln -snf `pwd`/tmux.conf ~/.tmux.conf
 ln -snf `pwd`/vimrc ~/.vimrc
 
 # neovim
-mkdir -p ~/.config/nvim
-ln -snf `pwd`/nvim-init.vim ~/.config/nvim/init.vim
+ln -snf ~/.vim ~/.config/nvim
+ln -snf ~/.vimrc ~/.config/nvim/init.vim
 
-# vim-plug for neovim
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# ctags
-# brew tap universal-ctags/universal-ctags
-# brew install --HEAD universal-ctags
-
-# vim-plug for vim
+# vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install vim plugs
 vim +PlugInstall +PlugClean! +qa
-

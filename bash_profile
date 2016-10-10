@@ -17,24 +17,12 @@ export ANDROID_HVPROTO=ddm
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-# node.js
-# export PATH=$PATH:/usr/local/share/npm/bin
-# export PATH="~/.node/bin:$PATH"
-
-# StandardML
-# export PATH=$PATH:/usr/local/Cellar/smlnj/110.75/libexec/bin
-
-# Haskell
-# export PATH=$PATH:$HOME/.cabal/bin
-
-# https://packer.io
-# export PATH=$PATH:/usr/local/packer
-
 # grep options
 export GREP_OPTIONS='--color=auto --exclude=*.pyc --exclude-dir=.git --exclude-dir=.bundle --exclude-dir=tmp --exclude-dir=log'
 
 # aliases
 alias ll='ls -alGh'
+alias mkdir="mkdir -p"
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 # prompt
@@ -51,7 +39,7 @@ export EDITOR=vim
 alias vim='nvim'
 
 # Make FZF respect .gitignore
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*!tmp/*!log/*"'
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
