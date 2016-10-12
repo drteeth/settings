@@ -50,7 +50,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
 " Ben
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'qpkorr/vim-bufkill'
@@ -202,7 +202,7 @@ augroup localEx
   autocmd filetype help nnoremap <buffer>q :q<CR>
   autocmd filetype help set nonumber
 
-  " autocmd! BufReadPost,BufWritePost * Neomake
+  autocmd! BufReadPost,BufWritePost * Neomake
 augroup END
 
 " git shortcuts
@@ -268,6 +268,8 @@ if has('nvim')
 end
 
 " Ben
+let g:deoplete#enable_at_startup = 1
+
 map <Leader>n :NERDTreeToggle<CR>
 nmap <C-f> :RFind<space>
 
