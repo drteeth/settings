@@ -39,7 +39,8 @@ export EDITOR=vim
 alias vim='nvim'
 
 # Make FZF respect .gitignore
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*!tmp/*!log/*"'
+export FZF_DEFAULT_COMMAND='ag -g ""'
+# export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*!tmp/*!log/*"'
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
