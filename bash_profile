@@ -35,8 +35,8 @@ export ARCHFLAGS="-arch x86_64"
 # export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
 # set the default editor
-export EDITOR=vim
 alias vim='nvim'
+export EDITOR=vim
 
 # Make FZF respect .gitignore
 export FZF_DEFAULT_COMMAND='ag -g ""'
