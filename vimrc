@@ -32,6 +32,7 @@ Plug 'tpope/vim-vinegar'
 " Ben
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'nanotech/jellybeans.vim'
+Plug 'chriskempson/base16-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'qpkorr/vim-bufkill'
 Plug 'pangloss/vim-javascript'
@@ -43,6 +44,13 @@ Plug 'lambdatoast/elm.vim'
 Plug 'kassio/neoterm'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'slashmili/alchemist.vim'
+Plug 'c-brenn/phoenix.vim'
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'ludovicchabant/vim-gutentags'
+
+" Polyglot loads language support on demand!
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -65,6 +73,7 @@ syntax on
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
+
 endif
 
 filetype plugin indent on
@@ -195,6 +204,9 @@ set winwidth=80       " minimum width for active split
 set clipboard=unnamed " use OS clipboard
 set nofoldenable
 
+" Incremental search, search as you type
+set incsearch
+
 " Whitespace stuff
 set nowrap
 
@@ -215,8 +227,15 @@ augroup localEx
   autocmd filetype help nnoremap <buffer>q :q<CR>
   autocmd filetype help set nonumber
 
-  autocmd! BufReadPost,BufWritePost * Neomake
+  " autocmd! BufReadPost,BufWritePost * Neomake
 augroup END
+
+" Run Neomake when I save any buffer
+augroup localneomake
+  autocmd! BufWritePost * Neomake
+augroup END
+" Don't tell me to use smartquotes in markdown ok?
+let g:neomake_markdown_enabled_makers = []
 
 " git shortcuts
 noremap <leader>gb :Gblame<CR>
@@ -264,14 +283,27 @@ if has('nvim')
   tnoremap <silent> <C-l> <C-\><C-n>:TmuxNavigateRight<CR>
 
   " Enter terminal insert mode as soon as I enter a terminal split
-  autocmd BufEnter term://* startinsert
+  " autocmd BufEnter term://* startinsert
 end
 
 " Ben
+let g:gutentags_cache_dir = '~/.tags_cache'
+
 let g:deoplete#enable_at_startup = 1
+" use tab for completion
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+set encoding=utf-8
 
 map <Leader>n :NERDTreeToggle<CR>
 nmap <C-f> :Ag<space>
+
+" Set the title of the iterm tab
+set title
+
+" highlight cursor position
+set cursorline
+set cursorcolumn
 
 " FZF with ctrl-p
 map <C-p> :FZF<cr>
