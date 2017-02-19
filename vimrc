@@ -48,6 +48,11 @@ Plug 'slashmili/alchemist.vim'
 Plug 'c-brenn/phoenix.vim'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'fsharp/vim-fsharp', {
+      \ 'for': 'fsharp',
+      \ 'do':  'make fsautocomplete',
+      \}
 
 " Polyglot loads language support on demand!
 Plug 'sheerun/vim-polyglot'
@@ -309,7 +314,7 @@ set cursorcolumn
 map <C-p> :FZF<cr>
 
 " Allow JSX in normal JS files
-let g:jsx_ext_required = 0
+" let g:jsx_ext_required = 0
 
 " Quickfix management - does it work with leader set to space?
 " map <Space><Space> :ccl<cr>
