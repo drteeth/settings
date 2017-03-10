@@ -34,7 +34,6 @@ values."
      ;;        shell-default-position 'bottom)
      syntax-checking
      auto-completion
-     company-mode
      git
      osx
      html
