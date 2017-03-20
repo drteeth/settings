@@ -18,6 +18,8 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     elixir
+     sql
      yaml
      javascript
      ;; ----------------------------------------------------------------
@@ -42,11 +44,12 @@ values."
      org
      colors
      themes-megapack
+     perspectives
      erlang
      elixir
      (ruby :variables
            ruby-enable-enh-ruby-mode t
-           ruby-test-runner 'rspec
+           ruby-test-runner 'minitest
            ruby-version-manager 'rvm)
      ruby-on-rails
      )
@@ -314,6 +317,11 @@ layers configuration. You are free to put any user code."
   (setq-default flycheck-disabled-checkers '(javascript-jscs))
 
   (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (with-eval-after-load 'elixir
+    (modify-syntax-entry ?_ "w" elixir-mode-syntax-table))
+
+  (custom-set-variables '(minitest-use-spring t)
+                        '(minitest-use-bundler nil))
   )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

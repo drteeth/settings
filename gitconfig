@@ -35,6 +35,6 @@
 [github]
   user = drteeth
 [commit]
-  gpgsign = true
+  gpgsign = false
 [fetch]
   prune = true
