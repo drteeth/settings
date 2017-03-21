@@ -47,7 +47,7 @@ Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'c-brenn/phoenix.vim'
 Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'fsharp/vim-fsharp', {
       \ 'for': 'fsharp',
