@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     ansible
      elixir
      sql
      yaml
@@ -44,7 +45,7 @@ values."
      org
      colors
      themes-megapack
-     perspectives
+     ;; perspectives
      erlang
      elixir
      (ruby :variables
@@ -123,7 +124,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 21
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -270,6 +271,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq web-mode-css-indent-offset n) ; web-mode, css in html file
   (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
   (setq css-indent-offset n) ; css-mode
+  (setq c-basic-offset n)
   )
 
 (defun my-personal-code-style ()
@@ -304,6 +306,9 @@ layers configuration. You are free to put any user code."
     (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
     (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
+  (with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol))
+
   (setq tab-width 2)
   (setq backup-by-copying t
         make-backup-files nil
@@ -324,7 +329,7 @@ layers configuration. You are free to put any user code."
                         '(minitest-use-bundler nil))
 
   (set-face-attribute 'default nil :family "Source Code Pro")
-  (set-face-attribute 'default nil :height 100)
+  (set-face-attribute 'default nil :height 155)
   )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
