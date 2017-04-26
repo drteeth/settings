@@ -40,7 +40,7 @@ values."
      syntax-checking
      auto-completion
      git
-     osx
+     ;; osx
      html
      org
      colors
@@ -53,6 +53,8 @@ values."
            ruby-test-runner 'minitest
            ruby-version-manager 'rvm)
      ruby-on-rails
+     gtags
+     react
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -223,7 +225,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers "yep"
+   dotspacemacs-line-numbers t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -329,7 +331,7 @@ layers configuration. You are free to put any user code."
                         '(minitest-use-bundler nil))
 
   (set-face-attribute 'default nil :family "Source Code Pro")
-  (set-face-attribute 'default nil :height 155)
+  (set-face-attribute 'default nil :height 125)
   )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
