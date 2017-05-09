@@ -10,7 +10,7 @@ fi
 export PATH=$PATH:/usr/local/Cellar/android-sdk/24.4.1_1/tools:/Applications/Android\ Studio.app/Contents/MacOS
 export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/24.4.1_1/
 export ANDROID_HOME=/usr/local/Cellar/android-sdk/24.4.1_1/
-export JAVA6_HOME=`/usr/libexec/java_home -v 1.6`
+# export JAVA6_HOME=`/usr/libexec/java_home -v 1.6`
 export ANDROID_HVPROTO=ddm
 
 # Go path
