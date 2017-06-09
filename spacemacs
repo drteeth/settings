@@ -273,7 +273,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq web-mode-css-indent-offset n) ; web-mode, css in html file
   (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
   (setq css-indent-offset n) ; css-mode
-  (setq c-basic-offset n)
+  (setq c-basic-offset 4)
   )
 
 (defun my-personal-code-style ()
@@ -328,7 +328,7 @@ layers configuration. You are free to put any user code."
     (modify-syntax-entry ?_ "w" elixir-mode-syntax-table))
 
   (custom-set-variables '(minitest-use-spring t)
-                        '(minitest-use-bundler nil))
+                        '(minitest-use-bundler t))
 
   (set-face-attribute 'default nil :family "Source Code Pro")
   (set-face-attribute 'default nil :height 125)
