@@ -28,8 +28,8 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
+     auto-completion
+     better-defaults
      emacs-lisp
      markdown
      (shell :variables
@@ -42,6 +42,7 @@ values."
      git
      ;; osx
      html
+     helm
      org
      colors
      themes-megapack
@@ -53,7 +54,10 @@ values."
            ruby-test-runner 'minitest
            ruby-version-manager 'rvm)
      ruby-on-rails
-     gtags
+     ;; gtags
+     version-control
+     yaml
+     javascript
      react
      )
    ;; List of additional packages that will be installed without being
