@@ -18,6 +18,11 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     rust
+     swift
+     fsharp
+     vimscript
+     go
      ansible
      elixir
      sql
@@ -328,8 +333,7 @@ layers configuration. You are free to put any user code."
   (setq-default flycheck-disabled-checkers '(javascript-jscs))
 
   (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (with-eval-after-load 'elixir
-    (modify-syntax-entry ?_ "w" elixir-mode-syntax-table))
+  (add-hook 'elixir-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
   (custom-set-variables '(minitest-use-spring t)
                         '(minitest-use-bundler t))
