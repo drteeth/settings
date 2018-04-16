@@ -13,6 +13,7 @@ ln -snf `pwd`/tmux.conf ~/.tmux.conf
 ln -snf `pwd`/vim ~/.vim
 ln -snf `pwd`/git_template ~/.git_template
 ln -snf `pwd`/vimrc ~/.vimrc
+ln -snf `pwd`/editorconfig .editorconfig
 
 # neovim
 ln -snf ~/.vim ~/.config/nvim
