@@ -17,59 +17,39 @@ values."
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(
-     rust
-     swift
-     fsharp
-     vimscript
-     go
-     ansible
+    '(
+       markdown
      elixir
      sql
      yaml
      javascript
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     auto-completion
-     better-defaults
+     react
+     ;; auto-completion
+     ;; better-defaults
      emacs-lisp
-     markdown
-     (shell :variables
-            shell-default-shell 'eshell)
+     ;; markdown
      ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     syntax-checking
-     auto-completion
+     ;;        shell-default-shell 'eshell)
+     ;; syntax-checking
      git
-     ;; osx
      html
      helm
-     org
-     colors
+     ;; colors
      themes-megapack
      ;; perspectives
      erlang
-     elixir
      (ruby :variables
            ruby-enable-enh-ruby-mode t
            ruby-test-runner 'minitest
            ruby-version-manager 'rvm)
      ruby-on-rails
      ;; gtags
-     version-control
-     yaml
-     javascript
-     react
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(editorconfig)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
                                     yasnippet
@@ -289,58 +269,62 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (interactive)
   (message "Indentation set to two")
   (setq indent-tabs-mode nil) ; use space instead of tab
-  (my-setup-indent 2) ; indent 2 spaces width
+  (my-setup-indent 4) ; indent 2 spaces width
   )
-
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
-  (define-key evil-normal-state-map (kbd "SPC SPC") 'alternate-buffer)
-  (global-company-mode)
+  ;; (define-key evil-normal-state-map (kbd "SPC SPC") 'alternate-buffer)
+        ;; (indent-guide-global-mode)
 
-  ;(indent-guide-global-mode)
+  (require 'helm)
+  (require 'tramp)
 
-  (setq-default
-   ;; js2-mode
-   ;; js2-basic-offset 2
-   ;; web-mode
-   css-indent-offset 2
-   web-mode-markup-indent-offset 2
-   web-mode-css-indent-offset 2
-   web-mode-code-indent-offset 2
-   web-mode-attr-indent-offset 2)
+  ;; (setq-default
+  ;;   ;; js2-mode
+  ;;   ;; js2-basic-offset 2
+  ;;   ;; web-mode
+  ;;   css-indent-offset 4
+  ;;   web-mode-markup-indent-offset 4
+  ;;   web-mode-css-indent-offset 4
+  ;;   web-mode-code-indent-offset 4
+  ;;   web-mode-attr-indent-offset 4)
+  ;; (setq tab-width 4)
+  ;; (my-personal-code-style)
 
-  (with-eval-after-load 'web-mode
-    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
-
-  (with-eval-after-load 'evil
-    (defalias #'forward-evil-word #'forward-evil-symbol))
-
-  (setq tab-width 2)
+  (setq-default create-lockfiles nil)
   (setq backup-by-copying t
-        make-backup-files nil
-        create-lockfiles nil)
-
+    make-backup-files nil
+    create-lockfiles nil)
 
   ;; call indentation
-  (my-personal-code-style)
-  (setq-default create-lockfiles nil)
-  (setq neo-theme 'nerd)
+  ;; (setq neo-theme 'nerd)
   (setq-default flycheck-disabled-checkers '(javascript-jscs))
 
   (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
   (add-hook 'elixir-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol))
+  ;; (with-eval-after-load 'web-mode
+  ;;   (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+  ;;   (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+  ;;   (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
-  (custom-set-variables '(minitest-use-spring t)
-                        '(minitest-use-bundler t))
+  (custom-set-variables
+    '(minitest-use-spring t)
+    '(minitest-use-bundler t))
 
-  (set-face-attribute 'default nil :family "Source Code Pro")
-  (set-face-attribute 'default nil :height 125)
+  ;; (set-face-attribute 'default nil :family "Source Code Pro")
+  ;; (set-face-attribute 'default nil :height 155)
+
+  ;; https://github.com/syl20bnr/spacemacs/issues/1611
+  (setq helm-split-window-inside-p t)
+
+  (editorconfig-mode 1)
   )
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -348,4 +332,14 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(minitest-use-bundler t)
+ '(minitest-use-spring t)
+  '(package-selected-packages
+     (quote
+       (markdown-mode tern editorconfig zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme projectile-rails inflections professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme feature-mode farmhouse-theme exotica-theme espresso-theme erlang dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit sql-indent spaceline smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake rainbow-delimiters pug-mode popwin persp-mode paradox orgit org-bullets open-junk-file ob-elixir neotree move-text mmm-mode minitest markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc jbeans-theme indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-mix flycheck-credo flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emmet-mode elisp-slime-nav dumb-jump diminish define-word column-enforce-mode coffee-mode clean-aindent-mode chruby bundler auto-highlight-symbol auto-compile alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 89)) (:foreground "#cccccc" :background "#151515")))))
