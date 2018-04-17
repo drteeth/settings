@@ -1,0 +1,38 @@
+[init]
+  templatedir = ~/.git_template
+[core]
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
+[color]
+  ui = auto
+[alias]
+  logs = log --pretty=oneline --abbrev-commit
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate --numstat
+  st = status
+  pf = push --force-with-lease
+[merge]
+  tool = meld
+[mergetool]
+  keepBackup = false
+  prompt = false
+[mergetool "meld"]
+  cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+[diff]
+  tool = meld
+[difftool]
+  prompt = false
+[difftool "diffmerge"]
+  cmd = meld "$LOCAL" "$REMOTE"
+[push]
+  default = current
+[user]
+  name = Benjamin Moss
+  email = drteeth@gmail.com
+  signingkey = Benjamin Moss <drteeth@gmail.com>
+[github]
+  user = drteeth
+[commit]
+  gpgsign = false
+[fetch]
+  prune = true

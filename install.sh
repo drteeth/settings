@@ -2,6 +2,7 @@ ln -snf `pwd`/ackrc ~/.ackrc
 ln -snf `pwd`/agignore ~/.agignore
 ln -snf `pwd`/agignore ~/.ignore
 ln -snf `pwd`/bash_profile ~/.bash_profile
+ln -snf `pwd`/bashrc-linux ~/.bashrc
 ln -snf `pwd`/ctags ~/.ctags
 ln -snf `pwd`/gemrc ~/.gemrc
 ln -snf `pwd`/gitconfig ~/.gitconfig
