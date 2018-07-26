@@ -260,7 +260,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
   (setq web-mode-css-indent-offset n) ; web-mode, css in html file
   (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+  (setq web-mode-indent-style n)
   (setq css-indent-offset n) ; css-mode
+  (setq ruby-indent-level n)
   (setq c-basic-offset 4)
   )
 
@@ -268,7 +270,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (interactive)
   (message "Indentation set to two")
   (setq indent-tabs-mode nil) ; use space instead of tab
-  (my-setup-indent 4) ; indent 2 spaces width
+  (my-setup-indent 2) ; indent 2 spaces width
   )
 
 (defun dotspacemacs/user-config ()

@@ -21,3 +21,5 @@ tmp/**/*
 *.pyc
 tags.tmp
 .tags
+.gem
+.bash_history
