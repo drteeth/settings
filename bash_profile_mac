@@ -1,0 +1,61 @@
+# homebrew path
+export PATH=/usr/local/bin:$PATH
+
+# bash completion
+if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+  . $(brew --prefix)/share/bash-completion/bash_completion
+fi
+
+# Node/Javascript
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+# android
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk/
+export ANDROID_HOME=$ANDROID_SDK_ROOT
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools
+# export JAVA6_HOME=`/ur/libexec/java_home -v 1.6`
+# export ANDROID_HVPROTO=ddm
+
+# Go path
+#export GOPATH=$HOME/go
+#export GOROOT=/usr/local/Cellar/go/1.10.2
+#export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+
+# grep options
+export GREP_OPTIONS='--color=auto --exclude=*.pyc --exclude-dir=.git --exclude-dir=.bundle --exclude-dir=tmp --exclude-dir=log'
+
+# aliases
+alias ll='ls -alGh'
+alias mkdir="mkdir -p"
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+
+# prompt
+export PS1='\W\[\033[32m\]$(__git_ps1) \[\033[0m\]% '
+
+# default to 64 bit compiles
+export ARCHFLAGS="-arch x86_64"
+
+# for curl-ca-bundle and more specifically vagrant/digital ocean
+# export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+
+# set the default editor
+export EDITOR=nvim
+
+#alias ctags="`brew --prefix`/bin/ctags"
+
+# Make FZF respect .gitignore
+export FZF_DEFAULT_COMMAND='ag -g ""'
+# export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*!tmp/*!log/*"'
+
+# NobleHour
+export KEY_PASS=flam-Bang8gorilla
+export STORE_PASS=flam-Bang8gorilla
+
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+
+
+# for Sphinx/Postgres
+export PATH="$PATH:/usr/local/bin/"
+
+source ~/.profile
