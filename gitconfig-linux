@@ -12,18 +12,22 @@
   st = status
   pf = push --force-with-lease
 [merge]
-  tool = meld
+	tool = meld
 [mergetool]
   keepBackup = false
   prompt = false
 [mergetool "meld"]
   cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+[mergetool "smerge"]
+  cmd = smerge
 [diff]
-  tool = meld
+	tool = meld
 [difftool]
   prompt = false
-[difftool "diffmerge"]
+[difftool "meld"]
   cmd = meld "$LOCAL" "$REMOTE"
+[difftool "smerge"]
+  cmd = smerge
 [push]
   default = current
 [user]
