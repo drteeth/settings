@@ -2,21 +2,25 @@
 alias ll='ls -alGh --color'
 alias mkdir="mkdir -p"
 alias grep='grep --color=auto --exclude=*.pyc --exclude-dir=.git --exclude-dir=.bundle --exclude-dir=tmp --exclude-dir=log'
+alias vim=nvim
 
 # prompt
 export PS1='\W\[\033[32m\]$(__git_ps1) \[\033[0m\]% '
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-. $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
+# . $HOME/.asdf/asdf.sh
+#
+# . $HOME/.asdf/completions/asdf.bash
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# export PATH="$PATH:$HOME/.rvm/bin"

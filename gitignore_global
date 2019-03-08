@@ -3,8 +3,8 @@
 __*
 .vagrant/
 .tags
-.bundle
 .ruby-gemset
+.bundle/
 .ruby-version
 .idea/
 .vagrant/
@@ -23,3 +23,5 @@ tags.tmp
 .tags
 .gem
 .bash_history
+.vscode
+/.elixir_ls
