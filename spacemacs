@@ -74,13 +74,16 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
     dotspacemacs-additional-packages '(
                                         jbeans-theme
-                                        vue-mode)
+                                        vue-mode
+                                        exunit
+                                        elixir-mode
+                                        lsp-elixir.el)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(alchemist)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -478,6 +481,17 @@ before packages are loaded."
     make-backup-files nil
     create-lockfiles nil)
 
+  (use-package lsp-mode
+    :commands lsp
+    :ensure t
+    :diminish lsp-mode
+    :hook
+    (elixir-mode . lsp)
+    :init
+    (add-to-list 'exec-path "/home/ben/elixir-ls"))
+
+  (use-package lsp-ui :commands lsp-ui-mode)
+  (use-package company-lsp :commands company-lsp)
   ;; (setq-default dotspacemacs-configuration-layers '(ponylang))
 
   (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
