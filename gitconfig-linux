@@ -11,6 +11,7 @@
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate --numstat
   st = status
   pf = push --force-with-lease
+  branches = branch -l --sort=-committerdate
 [merge]
 	tool = meld
 [mergetool]
