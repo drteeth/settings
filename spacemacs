@@ -33,31 +33,15 @@ This function should only modify configuration layer settings."
 
     ;; List of configuration layers to load.
     dotspacemacs-configuration-layers
-    '(ruby
-       ruby
-       ruby
-       ruby
+    '(
        yaml
        javascript
        (ruby :variables
          ruby-version-manager 'rvm
-
-         ;; ungc:
-         ;; ruby-enable-enh-ruby-mode t
-         ;; ruby-test-runner 'minitest
-
-         ;; everything else:
-         ;; ruby-test-runner 'rspec
          )
 
        html
-       ;; ----------------------------------------------------------------
-       ;; Example of useful layers you may want to use right away.
-       ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
-       ;; `M-m f e R' (Emacs style) to install them.
-       ;; ----------------------------------------------------------------
        auto-completion
-       ;; better-defaults
        emacs-lisp
        elixir
        lsp
