@@ -9,6 +9,7 @@ This function should only modify configuration layer settings."
     ;; Base distribution to use. This is a layer contained in the directory
     ;; `+distribution'. For now available distributions are `spacemacs-base'
     ;; or `spacemacs'. (default 'spacemacs)
+
     dotspacemacs-distribution 'spacemacs
 
     ;; Lazy installation of layers (i.e. layers are installed only when a file
@@ -33,31 +34,36 @@ This function should only modify configuration layer settings."
 
     ;; List of configuration layers to load.
     dotspacemacs-configuration-layers
-    '(
-       yaml
-       javascript
-       (ruby :variables
-         ruby-version-manager 'rvm
-         )
+    '(sql
+      csv
+      yaml
+      javascript
+      (ruby :variables
+            ruby-version-manager 'rvm
+            )
 
-       html
-       auto-completion
-       emacs-lisp
-       elixir
-       lsp
-       git
-       helm
-       ;; markdown
-       multiple-cursors
-       ;; org
-       ;; (shell :variables
-       ;;        shell-default-height 30
-       ;;        shell-default-position 'bottom)
-       ;; spell-checking
-       ;; syntax-checking
-       treemacs
-       ;; version-control
-       )
+      html
+      auto-completion
+      emacs-lisp
+      elixir
+      lsp
+      git
+      helm
+      ;; markdown
+      multiple-cursors
+      ;; org
+      ;; (shell :variables
+      ;;        shell-default-height 30
+      ;;        shell-default-position 'bottom)
+      ;; spell-checking
+      syntax-checking
+      treemacs
+      docker
+      (rust :variables
+            rust-format-on-save t
+            rust-backend 'lsp)
+      ;; version-control
+      )
 
     ;; List of additional packages that will be installed without being
     ;; wrapped in a layer. If you need some configuration for these
@@ -215,7 +221,7 @@ It should only modify the values of Spacemacs settings."
     ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
     ;; quickly tweak the mode-line size to make separators look not too crappy.
     dotspacemacs-default-font '("Source Code Pro"
-                                 :size 16
+                                 :size 18
                                  :weight normal
                                  :width normal)
 
@@ -477,6 +483,9 @@ before packages are loaded."
   ;; (use-package lsp-ui :commands lsp-ui-mode)
   (use-package company-lsp :commands company-lsp)
 
+  (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (add-hook 'elixir-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
   (with-eval-after-load 'elixir-mode
     (spacemacs/declare-prefix-for-mode 'elixir-mode
       "mt" "tests" "testing related functionality")
@@ -499,9 +508,16 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-  '(package-selected-packages
-     (quote
-       (yaml-mode tern livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe rbenv rake minitest helm-gtags ggtags enh-ruby-mode counsel-gtags chruby bundler inf-ruby web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode prettier-js impatient-mode htmlize simple-httpd helm-css-scss haml-mode emmet-mode counsel-css company-web web-completion-data add-node-modules-path yasnippet-snippets ws-butler writeroom-mode winum which-key vue-mode volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toc-org symon string-inflection spaceline-all-the-icons smeargle restart-emacs rainbow-delimiters popwin persp-mode pcre2el password-generator paradox overseer org-bullets open-junk-file ob-elixir nameless move-text magit-svn magit-gitflow macrostep lsp-ui lsp-treemacs lsp-elixir\.el lorem-ipsum link-hint jbeans-theme indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-lsp helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flycheck-package flycheck-mix flycheck-credo flx-ido fill-column-indicator fancy-battery eyebrowse exunit expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish define-word counsel-projectile company-statistics company-lsp column-enforce-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
+ '(package-selected-packages
+   (quote
+    (sqlup-mode sql-indent csv-mode yaml-mode tern livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe rbenv rake minitest helm-gtags ggtags enh-ruby-mode counsel-gtags chruby bundler inf-ruby web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode prettier-js impatient-mode htmlize simple-httpd helm-css-scss haml-mode emmet-mode counsel-css company-web web-completion-data add-node-modules-path yasnippet-snippets ws-butler writeroom-mode winum which-key vue-mode volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toc-org symon string-inflection spaceline-all-the-icons smeargle restart-emacs rainbow-delimiters popwin persp-mode pcre2el password-generator paradox overseer org-bullets open-junk-file ob-elixir nameless move-text magit-svn magit-gitflow macrostep lsp-ui lsp-treemacs lsp-elixir\.el lorem-ipsum link-hint jbeans-theme indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-lsp helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flycheck-package flycheck-mix flycheck-credo flx-ido fill-column-indicator fancy-battery eyebrowse exunit expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish define-word counsel-projectile company-statistics company-lsp column-enforce-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
+ '(safe-local-variable-values
+   (quote
+    ((ruby-test-runner . minitest)
+     (javascript-backend . tern)
+     (javascript-backend . lsp)
+     (elixir-enable-compilation-checking . t)
+     (elixir-enable-compilation-checking)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
