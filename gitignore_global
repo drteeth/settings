@@ -25,3 +25,5 @@ tags.tmp
 .bash_history
 .vscode
 /.elixir_ls
+.nix-gems
+mkmf.log
