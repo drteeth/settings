@@ -1,353 +1,127 @@
-call plug#begin()
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ","
 
-" thoughtbot
-Plug 'fatih/vim-go'
-Plug 'janko-m/vim-test'
-Plug 'kchmck/vim-coffee-script'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
-Plug 'vim-scripts/tComment'
-
-" Derek Prior
-Plug 'christoomey/vim-rfactory'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'croaky/vim-colors-github'
-Plug 'derekprior/vim-leaders'
-Plug 'derekprior/vim-trimmer'
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
-
-" Ben
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+call plug#begin('~/.nvim/plugged')
 Plug 'nanotech/jellybeans.vim'
-Plug 'chriskempson/base16-vim'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'qpkorr/vim-bufkill'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'rust-lang/rust.vim'
-Plug 'benekastah/neomake'
-Plug 'elixir-lang/vim-elixir'
-Plug 'lambdatoast/elm.vim'
-Plug 'kassio/neoterm'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+  let g:jellybeans_use_term_background_color = 0
 
-""" Code Navigation #code-navigation
-" fzf fuzzy finder
+Plug 'tpope/vim-sleuth'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  nnoremap <leader>gg :call CocAction('jumpDefinition', 'drop')<cr>
+Plug 'dense-analysis/ale'
+  nnoremap <leader>ln :ALENext<cr>
+  nnoremap <leader>lp :ALEPrevious<cr>
+
+Plug 'scrooloose/nerdtree'
+  nnoremap <silent> <leader>pt :NERDTreeToggle<cr>
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-  let g:fzf_layout = { 'window': 'enew' }
-  nnoremap <silent> <C-P> :FZF<cr>
-  nnoremap <silent> <leader>a :Ag<cr>
-  augroup localfzf
-    autocmd!
-    autocmd FileType fzf :tnoremap <buffer> <C-J> <C-J>
-    autocmd FileType fzf :tnoremap <buffer> <C-K> <C-K>
-    autocmd VimEnter * command! -bang -nargs=* Ag
-      \ call fzf#vim#ag(<q-args>,
-      \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-      \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-      \                 <bang>0)
-  augroup END
+   nnoremap <silent> <leader>pf :Files<CR>
+   nnoremap <silent> <leader>bb :Buffers<CR>
 
-Plug 'slashmili/alchemist.vim'
-Plug 'c-brenn/phoenix.vim'
-Plug 'powerman/vim-plugin-AnsiEsc'
-" Plug 'ludovicchabant/vim-gutentags'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'fsharp/vim-fsharp', {
-      \ 'for': 'fsharp',
-      \ 'do':  'make fsautocomplete',
-      \}
+Plug 'tpope/vim-surround'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-ragtag'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-bundler'
+Plug 'othree/html5.vim'
+Plug 'othree/yajs.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+  let g:used_javascript_libs = 'jquery'
 
-" Polyglot loads language support on demand!
-Plug 'sheerun/vim-polyglot'
+Plug 'gavocanov/vim-js-indent'
+Plug 'jimenezrick/vimerl'
+  let erlang_show_errors = 0
+
+Plug 'elixir-lang/vim-elixir'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-dispatch'
+Plug 'janko-m/vim-test'
+  let test#strategy = 'neovim'
+  " let test#neovim#term_position = "topright"
+
+  nnoremap <silent> <LocalLeader>tb :TestFile<CR>
+  nnoremap <silent> <LocalLeader>tt :TestNearest<CR>
+  nnoremap <silent> <LocalLeader>ta :TestSuite<CR>
+  nnoremap <silent> <LocalLeader>tr :TestLast<CR>
+  nnoremap <silent> <LocalLeader>tv :TestVisit<CR>
 
 call plug#end()
 
-" Leader
-let mapleader = " "
+set clipboard=unnamed,unnamedplus
+set number         " show line numbers
+set noswapfile     " disable creating of *.swp files
+set hidden         " hide buffers instead of closing
+set lazyredraw     " speed up on large files
 
-set backspace=2   " Backspace deletes like most programs in insert mode
-set nobackup
-set nowritebackup
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set history=50
-set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
-set incsearch     " do incremental searching
-set laststatus=2  " Always display the status line
-set autowrite     " Automatically :write before running commands
+set undolevels=5000     " set maximum undo levels
 
-syntax on
+set nofoldenable    " disable folding
 
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
+" Pretend we're in spacemacs
+nnoremap <leader>fs :w<CR>
+nnoremap <leader>qq :qa<CR>
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
+nnoremap <leader>bd :bd<CR>
+nnoremap <leader>w <c-w>
+nnoremap <leader>wd <c-w>q
 
-endif
+set laststatus=2 " always show status line
+set showcmd      " always show current command
 
-filetype plugin indent on
+" set nowrap        " disable wrap for long lines
+" set textwidth=0   " disable auto break long lines
 
-augroup vimrcEx
-  autocmd!
+set expandtab     " replace <Tab with spaces
+set tabstop=2     " number of spaces that a <Tab> in the file counts for
+set softtabstop=2 " remove <Tab> symbols as it was spaces
+set shiftwidth=2  " indent size for << and >>
+set shiftround    " round indent to multiple of 'shiftwidth' (for << and >>)
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+" set ignorecase " ignore case of letters
+" set smartcase  " override the 'ignorecase' when there is uppercase letters
+" set gdefault   " when on, the :substitute flag 'g' is default on
 
-  " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile Appraisals set filetype=ruby
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
-augroup END
-
-" When the type of shell script is /bin/sh, assume a POSIX-compatible
-" shell for syntax highlighting purposes.
-let g:is_posix = 1
-
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
-
-" Use one space, not two, after punctuation.
-set nojoinspaces
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
-endif
-
-" Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
-
-" Numbers
-set number
-set numberwidth=5
-
-" Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <S-Tab> <c-n>
-
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
-" vim-test mappings
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <leader>gt :TestVisit<CR
-
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_eruby_ruby_quiet_messages =
-    \ {"regex": "possibly useless use of a variable in void context"}
-
-" Set spellfile to location that is guaranteed to exist, can be symlinked to
-" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
-set spellfile=$HOME/.vim-spell-en.utf-8.add
-
-" Autocomplete with dictionary words when spell check is on
-set complete+=kspell
-
-" Always use vertical diffs
-set diffopt+=vertical
-
-set noshowmode        " powerline shows the mode
-set hlsearch          " highlight searches (:noh to turn off)
-set ignorecase        " case insensitive searching
-set smartcase         " overrides ignorecase when pattern contains caps
-set winwidth=80       " minimum width for active split
-set clipboard=unnamed " use OS clipboard
-set nofoldenable
-
-" Incremental search, search as you type
-set incsearch
-
-" Whitespace stuff
-set nowrap
-
-" Color scheme
 colorscheme jellybeans
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
+set cursorline     " highlight current line
+" set colorcolumn=80 " highlight column
+" highlight! ColorColumn ctermbg=233 guibg=#131313
 
-augroup localEx
-  autocmd!
+" Language-specific
+highlight! link elixirAtom rubySymbol
 
-  " File Type Settings
-  autocmd filetype qf setlocal wrap
+" " Toggle quickfix
+" map <silent> <F8> :copen<CR>
 
-  " Help System Speedups
-  autocmd filetype help nnoremap <buffer><CR> <c-]>
-  autocmd filetype help nnoremap <buffer><bs> <c-T>
-  autocmd filetype help nnoremap <buffer>q :q<CR>
-  autocmd filetype help set nonumber
+" Disable search highlighting
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
+"
+" " Switch between tabs
+nmap <leader>1 1gt
+nmap <leader>2 2gt
+nmap <leader>3 3gt
+nmap <leader>4 4gt
+nmap <leader>5 5gt
+nmap <leader>6 6gt
+nmap <leader>7 7gt
+nmap <leader>8 8gt
+nmap <leader>9 9gt
 
-  " autocmd! BufReadPost,BufWritePost * Neomake
-augroup END
+" " Remove trailing whitespaces in current buffer
+" nnoremap <Leader><BS>s :1,$s/[ ]*$//<CR>:nohlsearch<CR>1G
 
-" Run Neomake when I save any buffer
-augroup localneomake
-  autocmd! BufWritePost * Neomake
-augroup END
-" Don't tell me to use smartquotes in markdown ok?
-let g:neomake_markdown_enabled_makers = []
+" Use a blinking upright bar cursor in Insert mode, a solid block in normal
+" and a blinking underline in replace mode
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+let &t_SI = "\<Esc>[5 q"
+let &t_SR = "\<Esc>[3 q"
+let &t_EI = "\<Esc>[2 q"
 
-" git shortcuts
-noremap <leader>gb :Gblame<CR>
-noremap <leader>gd :Gdiff<CR>
-
-" open various consoles
-noremap <leader>gg :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'gitsh'")<CR>
-noremap <leader>gc :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'dev-console'")<CR>
-noremap <leader>gp :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'dev-db-console'")<CR>
-
-" simple vertical splits
-map <leader>v <C-w>v
-
-" Mappings for quick search & replace.
-" Do a / search first, then leave pattern empty in :s// to use last
-map <Leader>sra :%s///g<Left><Left>
-map <Leader>src :%s///gc<Left><Left><Left>
-
-" Hide highlighted terms
-map <silent> <leader><CR> :noh<CR>
-
-" vim-test mappings
-let g:test#strategy = 'neoterm'
-
-let g:neomake_serialize = 1
-let g:neomake_serialize_abort_on_error = 1
-let g:neomake_elixir_enabled_makers = ['mix']
-let g:neomake_elixir_mix_maker = {
-  \ 'args': ['compile'],
-  \ 'errorformat':
-  \ '** %s %f:%l: %m,' .
-  \ '%f:%l: warning: %m'
-  \ }
-
-nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
-
-if has('nvim')
-  " Escape to exit terminal mode
-  tnoremap <silent> <Esc> <C-\><C-n>
-
-  " Navigate out of terminal mode splits
-  tnoremap <silent> <C-h> <C-\><C-n>:TmuxNavigateLeft<CR>
-  tnoremap <silent> <C-j> <C-\><C-n>:TmuxNavigateDown<CR>
-  tnoremap <silent> <C-k> <C-\><C-n>:TmuxNavigateUp<CR>
-  tnoremap <silent> <C-l> <C-\><C-n>:TmuxNavigateRight<CR>
-
-  " Enter terminal insert mode as soon as I enter a terminal split
-  " autocmd BufEnter term://* startinsert
-end
-
-" Ben
-let g:gutentags_cache_dir = '~/.tags_cache'
-
-let g:deoplete#enable_at_startup = 1
-" use tab for completion
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-set encoding=utf-8
-
-map <Leader>n :NERDTreeToggle<CR>
-nmap <C-f> :Ag<space>
-
-" Set the title of the iterm tab
-set title
-
-" highlight cursor position
-set cursorline
-set cursorcolumn
-
-" FZF with ctrl-p
-map <C-p> :FZF<cr>
-
-" Allow JSX in normal JS files
-" let g:jsx_ext_required = 0
-
-" Quickfix management - does it work with leader set to space?
-" map <Space><Space> :ccl<cr>
-
-" remove trailing whitespace
-" autocmd BufWritePre * :%s/\s\+$//e
-
-" Search with rg
-set grepprg=rg\ --vimgrep
-
-" fat fingers
-command! Q q " Bind :Q to :q
-command! Qall qall
-command! E e
-command! W w
-command! Wq wq
-command! Bd BD
-command! Bp bp
