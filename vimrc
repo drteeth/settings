@@ -43,15 +43,44 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-dispatch'
+Plug 'kassio/neoterm'
 Plug 'janko-m/vim-test'
-  let test#strategy = 'neovim'
-  " let test#neovim#term_position = "topright"
+  let g:test#strategy = "neoterm"
+  let g:neoterm_shell = '$SHELL -l' " use the login shell
+  let g:neoterm_default_mod = 'vert'
+  let g:neoterm_autoscroll = 1      " autoscroll to the bottom when entering insert mode
+  let g:neoterm_keep_term_open = 0  " when buffer closes, exit the terminal too.
+
+  set splitbelow
+  set splitright
 
   nnoremap <silent> <LocalLeader>tb :TestFile<CR>
   nnoremap <silent> <LocalLeader>tt :TestNearest<CR>
   nnoremap <silent> <LocalLeader>ta :TestSuite<CR>
   nnoremap <silent> <LocalLeader>tr :TestLast<CR>
   nnoremap <silent> <LocalLeader>tv :TestVisit<CR>
+
+Plug 'scrooloose/syntastic'
+  let g:syntastic_enable_signs          = 1
+  let g:syntastic_enable_highlighting   = 1
+  let g:syntastic_cpp_check_header      = 1
+  let g:syntastic_enable_balloons       = 1
+  let g:syntastic_echo_current_error    = 1
+  let g:syntastic_check_on_wq           = 0
+  let g:syntastic_error_symbol          = '✘'
+  let g:syntastic_warning_symbol        = '!'
+  let g:syntastic_style_error_symbol    = ':('
+  let g:syntastic_style_warning_symbol  = ':('
+  let g:syntastic_vim_checkers          = ['vint']
+  let g:syntastic_elixir_checkers       = ['elixir']
+  let g:syntastic_javascript_checkers   = ['eslint']
+  let g:syntastic_ruby_checkers         = ['rubocop']
+  " let g:syntastic_enable_elixir_checker = 0
+
+  " augroup syntasticCustomCheckers
+  "   autocmd!
+  "   autocmd FileType ruby nnoremap <leader>` :SyntasticCheck rubocop<CR>
+  " augroup END
 
 call plug#end()
 
@@ -73,6 +102,11 @@ nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bd :bd<CR>
 nnoremap <leader>w <c-w>
 nnoremap <leader>wd <c-w>q
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 set laststatus=2 " always show status line
 set showcmd      " always show current command
@@ -114,6 +148,9 @@ nmap <leader>6 6gt
 nmap <leader>7 7gt
 nmap <leader>8 8gt
 nmap <leader>9 9gt
+
+" Switch between the last two files
+nnoremap <Leader><Leader> <C-^>
 
 " " Remove trailing whitespaces in current buffer
 " nnoremap <Leader><BS>s :1,$s/[ ]*$//<CR>:nohlsearch<CR>1G
