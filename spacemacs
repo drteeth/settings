@@ -78,6 +78,7 @@ This function should only modify configuration layer settings."
                                         elixir-mode
                                         lsp-elixir.el
                                         vue-mode
+                                        nix-mode
                                         )
 
     ;; A list of packages that cannot be updated.
@@ -221,7 +222,7 @@ It should only modify the values of Spacemacs settings."
     ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
     ;; quickly tweak the mode-line size to make separators look not too crappy.
     dotspacemacs-default-font '("Source Code Pro"
-                                 :size 18
+                                 :size 17
                                  :weight normal
                                  :width normal)
 
