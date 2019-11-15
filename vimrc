@@ -19,6 +19,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
    nnoremap <silent> <leader>pf :Files<CR>
    nnoremap <silent> <leader>bb :Buffers<CR>
+   nnoremap <silent> <leader>pb :Buffers<CR>
+   nnoremap <silent> <leader>/ :Rg<CR>
 
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
@@ -41,15 +43,19 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'vadimr/bclose.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-dispatch'
 Plug 'kassio/neoterm'
 Plug 'janko-m/vim-test'
   let g:test#strategy = "neoterm"
+  let g:test#preserve_screen = 0
   let g:neoterm_shell = '$SHELL -l' " use the login shell
   let g:neoterm_default_mod = 'vert'
   let g:neoterm_autoscroll = 1      " autoscroll to the bottom when entering insert mode
   let g:neoterm_keep_term_open = 0  " when buffer closes, exit the terminal too.
+  let g:test#ruby#use_spring_binstub = 0 " ignore spring 
+  let g:test#ruby#use_binstubs = 0 "ignore binstubs
 
   set splitbelow
   set splitright
@@ -60,27 +66,29 @@ Plug 'janko-m/vim-test'
   nnoremap <silent> <LocalLeader>tr :TestLast<CR>
   nnoremap <silent> <LocalLeader>tv :TestVisit<CR>
 
-Plug 'scrooloose/syntastic'
-  let g:syntastic_enable_signs          = 1
-  let g:syntastic_enable_highlighting   = 1
-  let g:syntastic_cpp_check_header      = 1
-  let g:syntastic_enable_balloons       = 1
-  let g:syntastic_echo_current_error    = 1
-  let g:syntastic_check_on_wq           = 0
-  let g:syntastic_error_symbol          = '✘'
-  let g:syntastic_warning_symbol        = '!'
-  let g:syntastic_style_error_symbol    = ':('
-  let g:syntastic_style_warning_symbol  = ':('
-  let g:syntastic_vim_checkers          = ['vint']
-  let g:syntastic_elixir_checkers       = ['elixir']
-  let g:syntastic_javascript_checkers   = ['eslint']
-  let g:syntastic_ruby_checkers         = ['rubocop']
-  " let g:syntastic_enable_elixir_checker = 0
+" Plug 'scrooloose/syntastic'
+"   let g:syntastic_enable_signs          = 1
+"   let g:syntastic_enable_highlighting   = 1
+"   let g:syntastic_cpp_check_header      = 1
+"   let g:syntastic_enable_balloons       = 1
+"   let g:syntastic_echo_current_error    = 1
+"   let g:syntastic_check_on_wq           = 0
+"   let g:syntastic_error_symbol          = '✘'
+"   let g:syntastic_warning_symbol        = '!'
+"   let g:syntastic_style_error_symbol    = ':('
+"   let g:syntastic_style_warning_symbol  = ':('
+"   let g:syntastic_vim_checkers          = ['vint']
+"   let g:syntastic_elixir_checkers       = ['elixir']
+"   let g:syntastic_javascript_checkers   = ['eslint']
+"   let g:syntastic_ruby_checkers         = ['rubocop']
+"   " let g:syntastic_enable_elixir_checker = 0
 
   " augroup syntasticCustomCheckers
   "   autocmd!
   "   autocmd FileType ruby nnoremap <leader>` :SyntasticCheck rubocop<CR>
   " augroup END
+
+Plug 'LnL7/vim-nix'
 
 call plug#end()
 
@@ -99,7 +107,7 @@ nnoremap <leader>fs :w<CR>
 nnoremap <leader>qq :qa<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
-nnoremap <leader>bd :bd<CR>
+nnoremap <leader>bd :Bclose<CR>
 nnoremap <leader>w <c-w>
 nnoremap <leader>wd <c-w>q
 
@@ -150,7 +158,7 @@ nmap <leader>8 8gt
 nmap <leader>9 9gt
 
 " Switch between the last two files
-nnoremap <Leader><Leader> <C-^>
+nnoremap <Leader><Tab> <C-^>
 
 " " Remove trailing whitespaces in current buffer
 " nnoremap <Leader><BS>s :1,$s/[ ]*$//<CR>:nohlsearch<CR>1G
