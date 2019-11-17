@@ -27,3 +27,4 @@ tags.tmp
 /.elixir_ls
 .nix-gems
 mkmf.log
+ben-private/
