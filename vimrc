@@ -49,6 +49,9 @@ Plug 'janko-m/vim-test'
 Plug 'LnL7/vim-nix'
 
 Plug 'morhetz/gruvbox'
+Plug 'gleam-lang/gleam.vim'
+Plug 'Valloric/ListToggle'
+Plug 'dyng/ctrlsf.vim'
 
 call plug#end()
 
@@ -106,6 +109,9 @@ set cursorline     " highlight current line
 " Language-specific
 highlight! link elixirAtom rubySymbol
 
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
+" let g:lt_height = 10
 
 " " Toggle quickfix
 " map <silent> <F8> :copen<CR>
@@ -172,6 +178,10 @@ nnoremap <silent> <leader>bb :Buffers<CR>
 nnoremap <silent> <leader>pb :Buffers<CR>
 nnoremap <silent> <leader>/ :Rg<CR>
 
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-filename --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, <bang>0)
+"
 " Misc
 let g:used_javascript_libs = 'jquery'
 let erlang_show_errors = 0
