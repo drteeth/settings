@@ -53,6 +53,8 @@ Plug 'gleam-lang/gleam.vim'
 Plug 'Valloric/ListToggle'
 Plug 'dyng/ctrlsf.vim'
 
+Plug 'ntpeters/vim-better-whitespace'
+
 call plug#end()
 
 set clipboard=unnamed,unnamedplus
@@ -156,7 +158,7 @@ let g:NERDTreeIgnore = ['^node_modules$']
 
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
+function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
@@ -193,7 +195,7 @@ let g:test#preserve_screen = 0
 let g:neoterm_default_mod = 'vert'
 let g:neoterm_autoscroll = 1      " autoscroll to the bottom when entering insert mode
 let g:neoterm_keep_term_open = 0  " when buffer closes, exit the terminal too.
-let g:test#ruby#use_spring_binstub = 0 " ignore spring 
+let g:test#ruby#use_spring_binstub = 0 " ignore spring
 let g:test#ruby#use_binstubs = 0 "ignore binstubs
 
 set splitbelow
@@ -212,9 +214,9 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ 'coc-pairs',
       \ 'coc-tsserver',
-      \ 'coc-eslint', 
-      \ 'coc-prettier', 
-      \ 'coc-json', 
+      \ 'coc-eslint',
+      \ 'coc-prettier',
+      \ 'coc-json',
       \ ]
 
 " if hidden is not set, TextEdit might fail.
@@ -235,6 +237,12 @@ set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
+
+" Whitespace
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
+let g:strip_only_modified_lines=0
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -344,4 +352,4 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-      
+
