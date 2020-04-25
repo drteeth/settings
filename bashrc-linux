@@ -3,6 +3,7 @@ alias ll='ls -alGh --color'
 alias mkdir="mkdir -p"
 alias grep='grep --color=auto --exclude=*.pyc --exclude-dir=.git --exclude-dir=.bundle --exclude-dir=tmp --exclude-dir=log'
 alias vim=nvim
+export EDITOR=nvim
 
 # prompt
 export PS1='\W\[\033[32m\]$(__git_ps1) \[\033[0m\]% '

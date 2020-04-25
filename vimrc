@@ -68,6 +68,8 @@ set undolevels=5000     " set maximum undo levels
 set nofoldenable    " disable folding
 set nowrap
 
+set pyxversion=3
+
 " Pretend we're in spacemacs
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>qq :qa<CR>
@@ -140,10 +142,10 @@ nnoremap <Leader><Tab> <C-^>
 
 " Use a blinking upright bar cursor in Insert mode, a solid block in normal
 " and a blinking underline in replace mode
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-let &t_SI = "\<Esc>[5 q"
-let &t_SR = "\<Esc>[3 q"
-let &t_EI = "\<Esc>[2 q"
+" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" let &t_SI = "\<Esc>[5 q"
+" let &t_SR = "\<Esc>[3 q"
+" let &t_EI = "\<Esc>[2 q"
 
 
 " Ale
