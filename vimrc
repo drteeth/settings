@@ -14,9 +14,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 
 Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Plug 'ryanoasis/vim-devicons'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -43,9 +40,9 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'vadimr/bclose.vim'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-dispatch'
-Plug 'kassio/neoterm'
 Plug 'janko-m/vim-test'
+Plug 'kassio/neoterm'
+
 Plug 'LnL7/vim-nix'
 
 Plug 'morhetz/gruvbox'
@@ -54,6 +51,9 @@ Plug 'Valloric/ListToggle'
 Plug 'dyng/ctrlsf.vim'
 
 Plug 'ntpeters/vim-better-whitespace'
+
+Plug 'hashivim/vim-terraform'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
@@ -191,14 +191,34 @@ let g:used_javascript_libs = 'jquery'
 let erlang_show_errors = 0
 
 " vim-test
-let g:test#strategy = "neoterm"
 let g:test#preserve_screen = 0
-" let g:neoterm_shell = '$SHELL -l' " use the login shell
+let g:test#ruby#use_spring_binstub = 0 " ignore spring
+let g:test#ruby#use_binstubs = 0 "ignore binstubs
+
+" let g:test#strategy = "neovim"
+" let test#neovim#term_position = "topleft"
+" let test#neovim#term_position = "vert"
+" let test#neovim#term_position = "vert botright 100"
+
+let g:test#strategy = "neoterm"
+" " let g:neoterm_shell = '$SHELL -l' " use the login shell
 let g:neoterm_default_mod = 'vert'
 let g:neoterm_autoscroll = 1      " autoscroll to the bottom when entering insert mode
 let g:neoterm_keep_term_open = 0  " when buffer closes, exit the terminal too.
-let g:test#ruby#use_spring_binstub = 0 " ignore spring
-let g:test#ruby#use_binstubs = 0 "ignore binstubs
+let g:neoterm_automap_keys = ',oo' " a recent change default neoterm_automap_keys to ',tt' so I set it to something else
+
+" The built-in mapping for exiting terminal insert mode is CTRL-\ CTRL-n, which is difficult to press, so I recommend mapping it to CTRL-o:
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
+
+" transforming commands => docker or whathaveyou
+" function! VagrantTransform(cmd) abort
+"   let vagrant_project = get(matchlist(s:cat('Vagrantfile'), '\vconfig\.vm.synced_folder ["''].+[''"], ["''](.+)[''"]'), 1)
+"   return 'vagrant ssh --command '.shellescape('cd '.vagrant_project.'; '.a:cmd)
+" endfunction
+" let g:test#custom_transformations = {'vagrant': function('VagrantTransform')}
+" let g:test#transformation = 'vagrant'
 
 set splitbelow
 set splitright
@@ -211,9 +231,9 @@ nnoremap <silent> <LocalLeader>tv :TestVisit<CR>
 
 
 " CoC
+      " \ 'coc-snippets',
 let g:coc_global_extensions = [
       \ 'coc-solargraph',
-      \ 'coc-snippets',
       \ 'coc-pairs',
       \ 'coc-tsserver',
       \ 'coc-eslint',
