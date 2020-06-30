@@ -51,6 +51,7 @@ Plug 'Valloric/ListToggle'
 Plug 'dyng/ctrlsf.vim'
 
 Plug 'ntpeters/vim-better-whitespace'
+" Plug '~/projects/tardis_rs'
 
 Plug 'hashivim/vim-terraform'
 Plug 'christoomey/vim-tmux-navigator'
@@ -239,6 +240,7 @@ let g:coc_global_extensions = [
       \ 'coc-eslint',
       \ 'coc-prettier',
       \ 'coc-json',
+      \ 'coc-elixir',
       \ ]
 
 " if hidden is not set, TextEdit might fail.
@@ -354,6 +356,8 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+set pyxversion=3
 
 " Using CocList
 " Show all diagnostics
