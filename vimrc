@@ -373,5 +373,13 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" ale
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '⚠️'
+let g:ale_fix_on_save = 1
 
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
