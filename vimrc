@@ -6,6 +6,7 @@ Plug 'nanotech/jellybeans.vim'
 
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-projectionist'
+Plug 'andyl/vim-projectionist-elixir'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
