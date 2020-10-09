@@ -12,6 +12,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
 Plug 'dense-analysis/ale'
 
 Plug 'scrooloose/nerdtree'
@@ -55,7 +56,8 @@ Plug 'ntpeters/vim-better-whitespace'
 " Plug '~/projects/tardis_rs'
 
 Plug 'hashivim/vim-terraform'
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
+Plug 'stefandtw/quickfix-reflector.vim'
 
 call plug#end()
 
@@ -183,6 +185,7 @@ nnoremap <silent> <leader>pf :Files<CR>
 nnoremap <silent> <leader>bb :Buffers<CR>
 nnoremap <silent> <leader>pb :Buffers<CR>
 nnoremap <silent> <leader>/ :Rg<CR>
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 " command! -bang -nargs=* Rg
 "   \ call fzf#vim#grep(
@@ -194,8 +197,14 @@ let erlang_show_errors = 0
 
 " vim-test
 let g:test#preserve_screen = 0
+
+" ruby
 let g:test#ruby#use_spring_binstub = 0 " ignore spring
 let g:test#ruby#use_binstubs = 0 "ignore binstubs
+
+" jest
+" let g:test#javascript#jest#executable = 'node_modules/.bin/jest --no-coverage --runInBand -- '
+let g:test#javascript#jest#executable = 'npm test'
 
 " let g:test#strategy = "neovim"
 " let test#neovim#term_position = "topleft"
