@@ -127,13 +127,13 @@ let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 " let g:lt_height = 10
 
-" " Toggle quickfix
+" Toggle quickfix
 " map <silent> <F8> :copen<CR>
 
 " Disable search highlighting
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
-"
-" " Switch between tabs
+
+" Switch between tabs
 nmap <leader>1 1gt
 nmap <leader>2 2gt
 nmap <leader>3 3gt
@@ -147,7 +147,7 @@ nmap <leader>9 9gt
 " Switch between the last two files
 nnoremap <Leader><Tab> <C-^>
 
-" " Remove trailing whitespaces in current buffer
+" Remove trailing whitespaces in current buffer
 " nnoremap <Leader><BS>s :1,$s/[ ]*$//<CR>:nohlsearch<CR>1G
 
 " Use a blinking upright bar cursor in Insert mode, a solid block in normal
@@ -169,7 +169,7 @@ let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " sync open file with NERDTree
-" " Check if NERDTree is open or active
+"  Check if NERDTree is open or active
 function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
@@ -224,7 +224,7 @@ let g:test#javascript#jest#executable = 'node_modules/.bin/jest -i'
 " let test#neovim#term_position = "vert botright 100"
 
 let g:test#strategy = "neoterm"
-" " let g:neoterm_shell = '$SHELL -l' " use the login shell
+"  let g:neoterm_shell = '$SHELL -l' " use the login shell
 let g:neoterm_default_mod = 'vert'
 let g:neoterm_autoscroll = 1      " autoscroll to the bottom when entering insert mode
 let g:neoterm_keep_term_open = 0  " when buffer closes, exit the terminal too.
@@ -378,8 +378,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-set pyxversion=3
 
 " Using CocList
 " Show all diagnostics
