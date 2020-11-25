@@ -72,7 +72,13 @@ set undolevels=5000     " set maximum undo levels
 set nofoldenable    " disable folding
 set nowrap
 
+let g:python3_host_prog = '/usr/bin/python3'
+
 set pyxversion=3
+
+" Allow local .vimrc, .nvimrc, and .exrc files to run
+set exrc
+set secure
 
 " Pretend we're in spacemacs
 nnoremap <leader>fs :w<CR>
@@ -202,9 +208,15 @@ let g:test#preserve_screen = 0
 let g:test#ruby#use_spring_binstub = 0 " ignore spring
 let g:test#ruby#use_binstubs = 0 "ignore binstubs
 
+let g:test#ruby#minitest#executable = 'docker-compose exec web bundle exec rails test'
+let test#ruby#minitest#executable = 'docker-compose exec web bundle exec rails test'
+
+let g:test#ruby#rails#executable = 'docker-compose exec web bundle exec rails test'
+let test#ruby#rails#executable = 'docker-compose exec web bundle exec rails test'
+
 " jest
 " let g:test#javascript#jest#executable = 'node_modules/.bin/jest --no-coverage --runInBand -- '
-let g:test#javascript#jest#executable = 'npm test'
+let g:test#javascript#jest#executable = 'node_modules/.bin/jest -i'
 
 " let g:test#strategy = "neovim"
 " let test#neovim#term_position = "topleft"
