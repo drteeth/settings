@@ -24,7 +24,7 @@ tags.tmp
 .gem
 .bash_history
 .vscode
-/.elixir_ls
+.elixir_ls
 .nix-gems
 mkmf.log
 ben-private/

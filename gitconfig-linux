@@ -41,3 +41,5 @@
   gpgsign = false
 [fetch]
   prune = true
+[pull]
+	rebase = false

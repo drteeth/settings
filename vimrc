@@ -3,6 +3,7 @@ let g:maplocalleader = ","
 
 call plug#begin('~/.nvim/plugged')
 Plug 'nanotech/jellybeans.vim'
+Plug 'altercation/vim-colors-solarized'
 
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-projectionist'
@@ -58,6 +59,10 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'hashivim/vim-terraform'
 " Plug 'christoomey/vim-tmux-navigator'
 Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'udalov/kotlin-vim'
+
+" iOS
+Plug 'keith/swift.vim'
 
 call plug#end()
 
@@ -166,7 +171,7 @@ nnoremap <leader>lp :ALEPrevious<cr>
 " nnoremap <silent> <leader>pt :call SyncTree()<cr>
 nnoremap <silent> <leader>pt :NERDTreeToggle<cr>
 let g:NERDTreeGitStatusWithFlags = 1
-let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeIgnore = ['^node_modules$', '\~$', '_build[[dir]]', 'deps[[dir]]', 'erl_crash.dump[[file]]']
 
 " sync open file with NERDTree
 "  Check if NERDTree is open or active
@@ -184,6 +189,7 @@ function! SyncTree()
 endfunction
 
 " Highlight currently open buffer in NERDTree
+" Disable. This causes all sorts of madness when used
 " autocmd BufEnter * call SyncTree()
 
 " FZF
