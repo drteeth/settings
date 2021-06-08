@@ -55,6 +55,7 @@ Plug 'dyng/ctrlsf.vim'
 
 Plug 'ntpeters/vim-better-whitespace'
 " Plug '~/projects/tardis_rs'
+Plug 'uarun/vim-protobuf'
 
 Plug 'hashivim/vim-terraform'
 " Plug 'christoomey/vim-tmux-navigator'
@@ -122,7 +123,7 @@ colorscheme gruvbox
 let g:jellybeans_use_term_background_color = 0
 
 set cursorline     " highlight current line
-" set colorcolumn=80 " highlight column
+set colorcolumn=80 " highlight column
 " highlight! ColorColumn ctermbg=233 guibg=#131313
 
 " Language-specific
@@ -214,11 +215,11 @@ let g:test#preserve_screen = 0
 let g:test#ruby#use_spring_binstub = 0 " ignore spring
 let g:test#ruby#use_binstubs = 0 "ignore binstubs
 
-let g:test#ruby#minitest#executable = 'docker-compose exec web bundle exec rails test'
-let test#ruby#minitest#executable = 'docker-compose exec web bundle exec rails test'
-
-let g:test#ruby#rails#executable = 'docker-compose exec web bundle exec rails test'
-let test#ruby#rails#executable = 'docker-compose exec web bundle exec rails test'
+" let g:test#ruby#minitest#executable = 'docker-compose exec web bundle exec rails test'
+" let test#ruby#minitest#executable = 'docker-compose exec web bundle exec rails test'
+"
+" let g:test#ruby#rails#executable = 'docker-compose exec web bundle exec rails test'
+" let test#ruby#rails#executable = 'docker-compose exec web bundle exec rails test'
 
 " jest
 " let g:test#javascript#jest#executable = 'node_modules/.bin/jest --no-coverage --runInBand -- '
@@ -279,7 +280,7 @@ set nobackup
 set nowritebackup
 
 " Better display for messages
-set cmdheight=2
+set cmdheight=1
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
