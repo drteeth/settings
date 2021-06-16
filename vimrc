@@ -3,6 +3,7 @@ let g:maplocalleader = ","
 
 call plug#begin('~/.nvim/plugged')
 Plug 'nanotech/jellybeans.vim'
+Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
 
 Plug 'tpope/vim-sleuth'
@@ -56,6 +57,7 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'ntpeters/vim-better-whitespace'
 " Plug '~/projects/tardis_rs'
 Plug 'uarun/vim-protobuf'
+Plug 'elixir-lsp/elixir-ls'
 
 Plug 'hashivim/vim-terraform'
 " Plug 'christoomey/vim-tmux-navigator'
@@ -64,7 +66,6 @@ Plug 'udalov/kotlin-vim'
 
 " iOS
 Plug 'keith/swift.vim'
-
 call plug#end()
 
 set clipboard=unnamed,unnamedplus
@@ -270,6 +271,7 @@ let g:coc_global_extensions = [
       \ 'coc-prettier',
       \ 'coc-json',
       \ 'coc-elixir',
+      \ 'coc-diagnostic',
       \ ]
 
 " if hidden is not set, TextEdit might fail.
