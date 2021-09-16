@@ -2,6 +2,7 @@ let g:mapleader = "\<Space>"
 let g:maplocalleader = ","
 
 call plug#begin('~/.nvim/plugged')
+" Plug 'cespare/vim-toml'
 Plug 'nanotech/jellybeans.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
@@ -78,10 +79,6 @@ set undolevels=5000     " set maximum undo levels
 
 set nofoldenable    " disable folding
 set nowrap
-
-let g:python3_host_prog = '/usr/bin/python3'
-
-set pyxversion=3
 
 " Allow local .vimrc, .nvimrc, and .exrc files to run
 set exrc
