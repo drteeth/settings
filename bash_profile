@@ -62,4 +62,4 @@ if [ -e /home/ben/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ben/.nix-pro
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
-eval "$(direnv hook bash)"
+# eval "$(direnv hook bash)"
