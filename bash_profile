@@ -67,3 +67,4 @@ eval "$(direnv hook bash)"
 export CLOUDSDK_PYTHON=/usr/bin/python2.7
 
 source ~/projects/roar-for-good/purple_umbrella/purple_priv_env.sh
+# eval "$(direnv hook bash)"
