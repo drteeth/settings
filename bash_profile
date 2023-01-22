@@ -8,8 +8,8 @@ export FZF_DEFAULT_COMMAND='rg --files' # --follow'
 export FZF_DEFAULT_OPTS='-m'
 
 # Use docker as the local user to avoid permission problems
-alias docker-compose="env UID=$(id -u ${whoami}) GID=$(id -g ${whoami}) docker-compose"
-alias docker="env UID=$(id -u ${whoami}) GID=$(id -g ${whoami}) docker"
+# alias docker-compose="env UID=$(id -u ${whoami}) GID=$(id -g ${whoami}) docker-compose"
+# alias docker="env UID=$(id -u ${whoami}) GID=$(id -g ${whoami}) docker"
 
 # prompt
 export PS1='\W\[\033[32m\]$(__git_ps1) \[\033[0m\]% '
@@ -63,3 +63,7 @@ if [ -e /home/ben/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ben/.nix-pro
 . $HOME/.asdf/completions/asdf.bash
 
 eval "$(direnv hook bash)"
+
+export CLOUDSDK_PYTHON=/usr/bin/python2.7
+
+source ~/projects/roar-for-good/purple_umbrella/purple_priv_env.sh

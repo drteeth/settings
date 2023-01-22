@@ -18,3 +18,4 @@ export DISABLE_SPRING=1
 
 eval "$(direnv hook bash)"
 
+export PATH=~/.local/bin:"$PATH"

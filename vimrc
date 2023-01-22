@@ -219,6 +219,8 @@ let g:test#ruby#use_binstubs = 0 "ignore binstubs
 " let g:test#ruby#rails#executable = 'docker-compose exec web bundle exec rails test'
 " let test#ruby#rails#executable = 'docker-compose exec web bundle exec rails test'
 
+let test#custom_runners = {'Gleam': ['gleeunit']}
+
 " jest
 " let g:test#javascript#jest#executable = 'node_modules/.bin/jest --no-coverage --runInBand -- '
 let g:test#javascript#jest#executable = 'node_modules/.bin/jest -i'
@@ -408,6 +410,9 @@ nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<
 nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
 inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+" Search and replace in highlighted block
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " ale
 " let g:ale_sign_error = '❌'
